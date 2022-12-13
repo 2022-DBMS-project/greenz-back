@@ -1,0 +1,178 @@
+/* navbar design */
+.navbar {
+    padding: 10px 0;
+    background-color: white !important;
+}
+
+.nav-button {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.nav-button:hover {
+    background-color: #F9FAFB !important;
+}
+
+.nav-logo {
+    font-family: "Lucida Handwriting";
+    font-size: 40px;
+    font-weight: bold;
+    color: #568A35;
+    /*�ΰ� ����*/
+    height: 50px;
+    width: 100px;
+}
+
+.nav-logo:hover {
+    text-decoration: none;
+    color: #1A1F27;
+}
+/* footer design */
+.site-footer {
+    background-color: #26272b;
+    padding: 45px 0 20px 0;
+    font-size: 15px;
+    line-height: 24px;
+    color: #737373;
+}
+
+.site-footer hr {
+    border-top-color: #bbb;
+    opacity: 0.5
+}
+
+.site-footer hr.small {
+    margin: 20px 0
+}
+
+.site-footer h6 {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px
+}
+
+.site-footer .social-icons {
+    text-align: right
+}
+
+.site-footer .social-icons a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 6px;
+    margin-right: 0;
+    border-radius: 100%;
+    background-color: #33353d
+}
+
+.copyright-text {
+    margin: 0
+}
+
+.site-footer .site-footer {
+    text-align: center
+}
+body {
+    margin: 0;
+    padding: 0;
+  }
+  .Ibox {
+    font-family: 'Lucida Fax';
+    height: 100vh;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  img {
+    height: 80vh;
+    width: 28vw;
+  }
+#img1-caption{
+  height: 100vh;
+  width: 28vw;
+	display: none;
+	position: absolute;
+	bottom: 0px;
+	background-color: black;
+	color: white;
+	opacity: 0.8;
+  text-align: center;
+}
+#img2-caption{
+  height: 100vh;
+  width: 28vw;
+	display: none;
+	position: absolute;
+  left:28vh+5rem;
+	bottom: 0px;
+	background-color: black;
+	color: white;
+	opacity: 0.8;
+  text-align: center;
+}
+#img3-caption{
+  height: 100vh;
+  width: 28vw;
+	display: none;
+	position: absolute;
+    left:2*(28vh+5rem);
+	bottom: 0px;
+	background-color: black;
+	color: white;
+	opacity: 0.8;
+  text-align: center;
+}
+#img4-caption{
+  height: 100vh;
+  width: 28vw;
+	display: none;
+	position: absolute;
+    left:3*(28vh+5rem);
+	bottom: 0px;
+	background-color: black;
+	color: white;
+	opacity: 0.8;
+  text-align: center;
+}
+#img5-caption{
+  height: 100vh;
+  width: 28vw;
+	display: none;
+	position: absolute;
+    left:4*(28vh+5rem);
+	bottom: 0px;
+	background-color: black;
+	color: white;
+	opacity: 0.5;
+  text-align: center;
+}
+.title{
+  padding: 50vh 0;
+  font-size: 5vh;
+}
+p>a{
+  text-decoration:none;
+  color: white;
+}
+p>a:active{
+  text-decoration:none;
+  color: white;
+}
+p>a:link{
+  text-decoration:none;
+  color: white;
+}
+p>a:visited{
+  text-decoration:none;
+  color: white;
+}
+p>a:hover{
+  text-decoration:none;
+  color: #568A35;
+}

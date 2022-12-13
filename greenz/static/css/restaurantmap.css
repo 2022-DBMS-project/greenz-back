@@ -1,0 +1,132 @@
+/* navbar design */
+.navbar {
+    padding: 10px 0;
+    background-color: white !important;
+}
+
+.nav-button {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.nav-button:hover {
+    background-color: #F9FAFB !important;
+}
+
+.nav-logo {
+    font-family: "Lucida Handwriting";
+    font-size: 40px;
+    font-weight: bold;
+    color: #568A35;
+    /*ÔøΩŒ∞ÔøΩ ÔøΩÔøΩÔøΩÔøΩ*/
+    height: 50px;
+    width: 100px;
+}
+
+.nav-logo:hover {
+    text-decoration: none;
+    color: #1A1F27;
+}
+/* footer design */
+.site-footer {
+    background-color: #26272b;
+    padding: 45px 0 20px 0;
+    font-size: 15px;
+    line-height: 24px;
+    color: #737373;
+}
+
+.site-footer hr {
+    border-top-color: #bbb;
+    opacity: 0.5
+}
+
+.site-footer hr.small {
+    margin: 20px 0
+}
+
+.site-footer h6 {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px
+}
+
+.site-footer .social-icons {
+    text-align: right
+}
+
+.site-footer .social-icons a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 6px;
+    margin-right: 0;
+    border-radius: 100%;
+    background-color: #33353d
+}
+
+.copyright-text {
+    margin: 0
+}
+
+.site-footer .site-footer {
+    text-align: center
+}
+html{
+    scroll-behavior: smooth;
+}
+#content{
+    margin-top: 100px;
+    display: block;
+    position:relative;
+}
+.panel1{
+    font-family: "Lucida Sans";
+    position: fixed;
+    top: 0;
+    bottom:0;
+    padding-top: 140px;
+    right: 30px;
+    width: 400px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+
+}
+.panel1::-webkit-scrollbar{
+    /*?ä§?Å¨Î°? ?ïàÎ≥¥Ïù¥Í≤? ?ïò?äî Î∂?Î∂?*/
+    display:none;
+}
+.panel1 p{
+    font-size: 15px;
+}
+
+.panel-body {
+    height: 200px;
+}
+
+h4 {
+    font-size: 100px;
+}
+
+.addr{
+    color: #bbbbbb;
+}
+.ht{
+    color: black;
+}
+img{
+    width: 20px;
+    height: 20px;
+}
+.navbar{
+    margin:0px;
+}
+#map{
+    font-family: "Lucida Bright";
+    position: absolute;
+    margin: 90px 0;
+}

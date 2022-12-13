@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../static/css/recipe1.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <title>Recipe</title>
+    <!--    title에 레시피 아이콘 추가-->
+    <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Recipe_icon.svg/531px-Recipe_icon.svg.png?20210109132203">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9F99RNZ84F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9F99RNZ84F');
+    </script>
+    <style>
+        label{
+            font-weight: lighter;
+        }
+    </style>
+</head>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand-md page-scroll nav-logo" href="../templates/main.html">GREENZ</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a class="page-scroll nav-button" href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="./main.html">Home</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="./freshfood.html">Product</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="./Recipe_List.html">Recipe</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="./Restaurant_map.html">Restaurant</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="./cart.html">cart</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- content -->
+<section id="content">
+    <div class="container" style="align-items: center">
+        <div class="col-lg-12">
+            <div class="snav">
+                <ul>
+                    <li><a href="#">Intro</a></li>
+                    <li><a href="#Ingre">Ingredients</a></li>
+                    <li><a href="#m">Method</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="bfood col-lg-12">
+            <div class="bimg col-lg-4">
+                <img src="../static/src/Raw-Carrot-Apple-and-Goji-Bircher-Muesli.jpg" alt="Recipe1Img" class="img-circle" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+            </div>
+            <div class="about">
+                <h2 >Vegan Raw Carrot, Apple and Goji Bircher Muesli Recipe</h2>
+                <p style="font-weight:bold; text-align:center">Raw bircher muesli is an easy vegan breakfast recipe that can be prepared beforehand. Not only is it a delicious way to start your day, but this healthy vegan breakfast has plenty of essential vitamins and minerals to give you a good start to your day.Our raw carrot, apple, and goji bircher muesli recipe is also suitable for a gluten-free diet.</p>
+                <p>To make this healthy vegan breakfast, buckwheat grains are soaked overnight for easy digestion and packed with masses of other healthy ingredients to create a delicious, good-for-you version of Swiss bircher muesli. This raw bircher muesli base is made from buckwheat flakes which lower cholesterol and are a good source of protein and fibre.Buckwheat is a highly nutritious whole grain and is gluten-free.The raw carrot is high in vitamin A, and the goji berries are high in vitamin A and C. Yes, this is a vitamin-rich vegan breakfast, The other ingredients add texture and flavour and pack this bircher muesli with more healthy fats, vitamins and minerals. The pistachios are high in potassium, and the hazelnuts are high in vitamin E and have a good amount of omega-6 and omega-9 fatty acids.The apricots are a good source of vitamin A, C, E and calcium, and the sunflower seeds are high in protein, iron and zinc, among other vitamins and minerals. If you are looking for a healthy gluten-free, vegan breakfast, then our bircher muesli recipe is the best.</p>
+            </div>
+        </div>
+    </div>
+    <div id="Ingre">
+        <div class="container">
+            <div class="col-lg-12" style="padding:100px;">
+                <h3>Ingredients</h3>
+                <span>( Servings : &nbsp</span>
+                <input type="number" class="form-control" value="1" min="1" id="serve" onclick="Cal_Serve();">
+                <span>)</span>
+                <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>ingredients</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><span>62.50</span> grams buckwheat flakes</td>
+                    </tr>
+                    <tr>
+                        <td><span>0.50</span> carrot, grated</td>
+                    </tr>
+                    <tr>
+                        <td><span>1</span> red-skinned apples</td>
+                    </tr>
+                    <tr>
+                        <td><span>75</span> ml apple juice</td>
+                    </tr>
+                    <tr>
+                        <td><span>75</span> ml almond milk</td>
+                    </tr>
+                    <tr>
+                        <td><span>0.75</span> Tbsp dried goji berries</td>
+                    </tr>
+                    <tr>
+                        <td><span>0.75</span> Tbsp chopped hazelnuts</td>
+                    </tr>
+                    <tr>
+                        <td><span>1</span> Tbsp dried chopped apricots</td>
+                    </tr>
+                    <tr>
+                        <td><span>0.75</span> Tbsp shelled pistachio nuts</td>
+                    </tr>
+                    <tr>
+                        <td><span>0.50</span> Tbsp sunflower seeds</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 100px;">
+        <div class="col-lg-12" style="padding:70px;">
+            <h3 id="m">Method</h3>
+            <hr style="margin-top:0; margin-bottom: 30px;">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" onclick="check(this)">
+                <label class="form-check-label" id="m1">
+                    1. Put the buckwheat flakes and carrot in a large bowl. Core, thinly slice and chop one of the apples and add to the bowl. Stir the bowl contents well until thoroughly combined. Stir in the apple juice, almond milk and 1 tablespoon of the goji berries. Cover and leave overnight in the refrigerator.</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" onclick="check2(this)">
+                <label class="form-check-label" id="m2">
+                    2. Stir the hazelnuts into the bowl. Core, thinly slice and chop the remaining apple.</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" onclick="check3(this)">
+                <label class="form-check-label" id="m3">
+                    3. Divide the muesli between serving dishes and sprinkle the apple, remaining goji berries, apricots, pistachio nuts and sunflower seeds over the muesli. Serve immediately.</label>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<script>
+    function zoomIn(event) {
+        event.target.style.transform = "scale(1.2)";
+        event.target.style.zIndex = 1;
+        event.target.style.transition = "all 1s";
+    }
+
+    function zoomOut(event) {
+        event.target.style.transform = "scale(1)";
+        event.target.style.zIndex = 0;
+        event.target.style.transition = "all 1s";
+    }
+
+
+
+    var val=new Array();
+    const nodeList=document.querySelectorAll("span");
+    for(let i=5;i<nodeList.length;i++){
+        val[i]=nodeList[i].innerHTML;
+    }
+    function Cal_Serve(){
+        var quant=document.getElementById("serve").value;
+        for(var i=5;i<nodeList.length;i++){
+            var sum=(parseFloat(val[i]))*(parseFloat(quant));
+            document.querySelectorAll("span")[i].innerHTML=sum;
+        }
+    }
+
+
+    function check(box){
+
+        if(box.checked==true){
+            document.getElementById("m1").style.textDecoration="line-through";
+        }
+        else{
+            document.getElementById("m1").style.textDecoration="none";
+        }
+    }
+    function check2(box){
+
+        if(box.checked==true){
+            document.getElementById("m2").style.textDecoration="line-through";
+        }
+        else{
+            document.getElementById("m2").style.textDecoration="none";
+        }
+    }
+    function check3(box){
+
+        if(box.checked==true){
+            document.getElementById("m3").style.textDecoration="line-through";
+        }
+        else{
+            document.getElementById("m3").style.textDecoration="none";
+        }
+    }
+    function check4(box){
+
+        if(box.checked==true){
+            document.getElementById("m4").style.textDecoration="line-through";
+        }
+        else{
+            document.getElementById("m4").style.textDecoration="none";
+        }
+    }
+    function check5(box){
+
+        if(box.checked==true){
+            document.getElementById("m5").style.textDecoration="line-through";
+        }
+        else{
+            document.getElementById("m5").style.textDecoration="none";
+        }
+    }
+
+
+
+
+</script>
+
+<!-- footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h6>(Inc)Oho</h6>
+                <p class="text-justify">Business registration number: 120-00-12345 <br>
+                    hosting services: Oho Corporation | Online Marketing Business Report Number: 1234-cbnu-56789 <br>
+                    28644 1, Chungdae-ro, Seowon-gu, Cheongju-si, Chungcheongbuk-do (S4-1, College of electrical and computer engineering BID.3) <br>
+                    Customer Service: 1, Chungdae-ro, Seowon-gu, Cheongju-si, Chungcheongbuk-do (S4-1, College of electrical and computer engineering BID.3)</p>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

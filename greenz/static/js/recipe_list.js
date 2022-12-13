@@ -1,0 +1,42 @@
+$(document).ready(function(){
+  $("img:first").mouseenter(function(){
+    $("#img1-caption").delay(500).slideDown("slow");
+  });
+  $("img:first").mouseleave(function(){
+    $("#img1-caption").delay(1000).slideUp("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("img:eq(1)").mouseenter(function(){
+    $("#img2-caption").delay(500).slideDown("slow");
+  });
+  $("img:eq(1)").mouseleave(function(){
+    $("#img2-caption").delay(1000).slideUp("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("img:eq(2)").mouseenter(function(){
+    $("#img3-caption").delay(500).slideDown("slow");
+  });
+  $("img:eq(2)").mouseleave(function(){
+    $("#img3-caption").delay(1000).slideUp("slow");
+  });
+});
+$(document).ready(function(){
+  $("img:eq(3)").mouseenter(function(){
+    $("#img4-caption").delay(500).slideDown("slow");
+  });
+  $("img:eq(3)").mouseleave(function(){
+    $("#img4-caption").delay(1000).slideUp("slow");
+  });
+});
+$(document).ready(function(){
+  $("img:eq(4)").mouseenter(function(){
+    $("#img5-caption").delay(500).slideDown("slow");
+  });
+  $("img:eq(4)").mouseleave(function(){
+    $("#img5-caption").delay(1000).slideUp("slow");
+  });
+});

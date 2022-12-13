@@ -1,0 +1,145 @@
+*{
+  font-family: 'Hahmlet', serif;
+}
+.navbar {
+    padding: 10px 0;
+    background-color: white !important;
+}
+
+.nav-button {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.nav-button:hover {
+    background-color: #F9FAFB !important;
+}
+
+.nav-logo {
+    font-family: "Lucida Handwriting";
+    font-size: 40px;
+    font-weight: bold;
+    color: #568A35; /*�ΰ� ����*/
+    height: 50px;
+    width: 100px;
+}
+
+.nav-logo:hover {
+    text-decoration: none;
+    color: #1A1F27;
+}
+.name{
+  margin-top:-30px;
+}
+.img1{
+
+}
+.product{
+  font-weight: 800;
+}
+.price{
+  font-weight: 800;
+  display: inline;
+}
+.won{
+  display: inline;
+  font-size: large;
+  font-weight: bold;
+}
+.all_price{
+  text-align: right;
+}
+.number{
+  font-size: large;
+  font-weight: 800;
+}
+.bc{
+  margin-top: 35px;
+}
+.buy{
+  width:250px;
+  height: 40px;
+  font-size:16px !important;
+  font-weight: bold !important;
+}
+.cart{
+  width: 300px;
+  height: 40px;
+  font-size:16px !important;
+  font-weight: bold !important;
+}
+#co:hover{
+  background-color: black;
+  color:white;
+}
+#co1:hover{
+  background-color: black;
+  color:white;
+}
+#private{
+  font-size: x-large;
+  font-weight: 800;
+}
+.form-control{
+  margin-left: 20px;
+}
+#one_line{
+  margin-top: 150px;
+}
+.site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+  margin-top: 150px;
+}
+
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+
+.site-footer hr.small
+{
+  margin:20px 0
+}
+
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+
+.site-footer .social-icons
+{
+  text-align:right
+}
+
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+
+.copyright-text
+{
+  margin:0
+}
+
+.site-footer .site-footer
+{
+  text-align:center
+}

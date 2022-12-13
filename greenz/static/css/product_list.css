@@ -1,0 +1,228 @@
+*{
+  font-family: 'Hahmlet', serif;
+}
+.navbar {
+    padding: 10px 0;
+    background-color: white !important;
+}
+
+.nav-button {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.nav-button:hover {
+    background-color: #F9FAFB !important;
+}
+
+.nav-logo {
+    font-family: "Lucida Handwriting";
+    font-size: 40px;
+    font-weight: bold;
+    color: #568A35; /*�ΰ� ����*/
+    height: 50px;
+    width: 100px;
+}
+
+.nav-logo:hover {
+    text-decoration: none;
+    color: #1A1F27;
+}
+.rolling_panel
+{
+  position: relative;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+#prev, #next
+{
+  color:black;
+}
+.rolling_panel ul
+{
+  position: absolute;
+  margin: 5px;
+   padding: 0;
+   list-style: none;
+ }
+.rolling_panel ul li
+{
+  float: left;
+  height:  500px;
+}
+#one {
+  margin-top: 100px;
+}
+#brand
+{
+  width:1200px;
+  background-color: black;
+}
+
+#navbar{
+  margin-top: 300px;
+  margin-left: -100px;
+}
+#navbar ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+#navbar ul li {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+#navbar ul li a:hover {
+    text-decoration: none;
+    color: grey;
+}
+
+.img1:hover{
+  opacity:0.84;
+}
+.img-rectangle:hover{
+  transform: scale(1.01);
+}
+.menu{
+  text-decoration: none;
+  color: grey;
+  margin-left: 30px;
+  margin-bottom: 60px;
+}
+.menu:hover{
+    text-decoration: none;
+    color: black;
+}
+.img1{
+
+}
+#all{
+  margin-bottom: 60px;
+}
+#fresh{
+
+}
+.cart{
+  font-size: 35px;
+  color:white;
+  margin-left: auto;
+  margin-left: 210px;
+  background-color: #92c288;
+  border-radius: 10px;
+  width:45px;
+  height: 40px;
+  padding:5px;
+}
+.cart:hover{
+  color:#498a3a;
+}
+.intro{
+  background-color: white;
+  height: 90px;
+  padding-top:15px;
+}
+.pro_name{
+  font-weight: 800;
+  font-size: large;
+}
+.price{
+  font-weight: bold;
+  font-size: large;
+  display: inline;
+}
+.won
+{
+  font-weight: bold;
+  font-size: large;
+  display: inline;
+}
+#z{
+  height:20px;
+  border:2px solid black;
+}
+.pro1{
+  position: absolute;
+  bottom: -30px;
+  display: none;
+  width: 290px;
+	opacity: 1.0;
+}
+#line{
+  margin-top: 100px;
+}
+#one_line{
+  margin-top: 170px;
+}
+.two_line{
+  margin-top: 80px;
+}
+#three_line{
+  margin-top: 80px;
+}
+.site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+  margin-top: 150px;
+}
+
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+
+.site-footer hr.small
+{
+  margin:20px 0
+}
+
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+
+.site-footer .social-icons
+{
+  text-align:right
+}
+
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+
+.copyright-text
+{
+  margin:0
+}
+
+.site-footer .site-footer
+{
+  text-align:center
+}

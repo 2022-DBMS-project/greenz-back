@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/restaurantmap.css" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <title>RestaurantMap</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9F99RNZ84F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9F99RNZ84F');
+    </script>
+
+
+</head>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand-md page-scroll nav-logo" href="/greenz/">GREENZ</a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a class="page-scroll nav-button" href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="/greenz/product/">Product</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="/greenz/recipe/">Recipe</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="/greenz/restaurant/">Restaurant</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="/greenz/cart/">Cart</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="/greenz/mypage/">My Page</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="/greenz/login/">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- content -->
+<section id="content">
+    <div id="map" style=" position: fixed; top:0px; left:0px; bottom: 0px; width:100%; height:100vh; padding:0px;margin:0 auto;"></div>
+    <div class="container" style="align-items: center">
+        <div class="col-lg-12">
+            <div class="container">
+                <div class="panel1">
+                    <div class="panel-group">
+                        <div class="panel panel-default" onclick="location.href='./Restaurant1.html'">
+                            <div class="panel-body" id="chick" >
+                                <h4 style="font-size: 25px;">chick peace</h4>
+                                <p class="addr">69, Gangnam-daero 152-gil, Gangnam-gu, Seoul, Republic of Korea</p>
+                                <p class="ht" id="h"><img src="/static/src/icons8-greek-salad-48.png" alt="greeksaladimg">#VeganRestaurant #MediterraneanRestaurant</p>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" onclick="location.href='./Restaurant2.html'">
+                            <div class="panel-body" id="localeat">
+                                <h4 style="font-size: 25px;">local Eat</h4>
+                                <p class="addr">33, Hallimmal-gil, Seongdong-gu, Seoul, Republic of Korea</p>
+                                <p class="ht" id="h1"><img src="/static/src/icons8-oak-leaf-24.png" alt="leafimg">#OksuroCaleat #VeganRestaurant</p>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" onclick="location.href='./Restaurant3.html'">
+                            <div class="panel-body" id="plato">
+                                <h4 style="font-size: 25px;">plat[o:]</h4>
+                                <p class="addr">103-1, Yangjaecheon-ro, Seocho-gu, Seoul, Republic of Korea</p>
+                                <p class="ht" id="h2"><img src="/static/src/icons8-egg-24.png" alt="eggimg">#YangjaeVeganCafe #YangjaeBrunchCafe</p>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" onclick="location.href='./Restaurant4.html'">
+                            <div class="panel-body" id="ftm">
+                                <h4 style="font-size: 25px;">FOOD DOES MATTER</h4>
+                                <p class="addr">10, Seorae-ro 1-gil, Seocho-gu, Seoul, Republic of Korea</p>
+                                <p class="ht" id="h3"><img src="/static/src/icons8-vegan-24.png" alt="veganimg">#Seorae Village's famous restaurant</p>
+                            </div>
+                        </div>
+                        <div class="panel panel-default" onclick="location.href='./Restaurant5.html'">
+                            <div class="panel-body" id="AG">
+                                <h4 style="font-size: 25px;">around green</h4>
+                                <p class="addr">79, Mangwon-ro, Mapo-gu, Seoul, Republic of Korea</p>
+                                <p class="ht" id="h4"><img src="/static/src/icons8-pizza-24.png" alt="pizzaimg">#AroundGreen #VeganPizza</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function myMap() {
+        var mapCanvas = document.getElementById("map");
+        var myCenter = new google.maps.LatLng(37.517565860261115,128.97512010856524 );
+        var mapOptions = {
+            center: myCenter,
+            zoom: 13,
+        };
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+
+        var markers = [
+            new google.maps.LatLng	(	37.519097598426434	,	127.02472486215174	)	,
+            new google.maps.LatLng	(	 37.54091025638059	,	127.01477757051197	)	,
+            new google.maps.LatLng	(	37.476545573523595	,	127.04019079188957	)	,
+            new google.maps.LatLng	(	37.49625292942323	,	 126.99762806371254	)	,
+            new google.maps.LatLng	(	37.55760497996829	,	126.90559090235266	)	,
+
+        ];
+
+        var originlist = [
+            ['chick peace','#VeganRestaurant #MediterraneanRestaurant','../static/src/icons8-greek-salad-48.png'],
+            ['local eat','#VeganRestaurant #OksuroCaleat','../static/src/icons8-oak-leaf-24.png'],
+            ['plat [o:]','#YangjaeVeganCafe #YangjaeBrunchCafe','../static/src/icons8-egg-24.png'],
+            ['FOOD DOES MATER','#Seorae Village\'s famous restaurant','../static/src/icons8-vegan-24.png'],
+            ['around green','#AroundGreen #VeganPizza','../static/src/icons8-pizza-24.png'],
+        ];
+
+        var marker, i, infowindow;
+
+        for(i = 0; i < markers.length; i++){
+            marker = new google.maps.Marker({
+                position: markers[i],
+                map: map
+            });
+
+            infowindow = new google.maps.InfoWindow({
+                content:
+                    "<p style = 'color: black'>" + originlist[i][0] +"</p>" +
+                    "<p style = 'color: green'>" + originlist[i][1] +  "</p>" +
+                    "<img width='30' height='30' src = '" + originlist[i][2] + "'>"
+            });
+            infowindow.open(map,marker);
+        }
+
+    }
+// pannel1
+    document.getElementById("chick").onmouseover = function() {mouseOver()};
+    document.getElementById("chick").onmouseout = function() {mouseOut()};
+
+
+    function mouseOver() {
+        document.getElementById("chick").style.backgroundColor = "#568A35";
+        document.getElementById("chick").style.color = "white";
+        document.getElementById("h").style.color = "white";
+    }
+    function mouseOut() {
+        document.getElementById("chick").style.backgroundColor = "white";
+        document.getElementById("chick").style.color = "black";
+        document.getElementById("h").style.color = "black";
+    }
+    // pannel2
+    document.getElementById("localeat").onmouseover = function() {mouseOver1()};
+    document.getElementById("localeat").onmouseout = function() {mouseOut1()};
+
+    function mouseOver1() {
+        document.getElementById("localeat").style.backgroundColor = "#568A35";
+        document.getElementById("localeat").style.color = "white";
+        document.getElementById("h1").style.color = "white";
+    }
+    function mouseOut1() {
+        document.getElementById("localeat").style.backgroundColor = "white";
+        document.getElementById("localeat").style.color = "black";
+        document.getElementById("h1").style.color = "black";
+    }
+    // pannel3
+    document.getElementById("plato").onmouseover = function() {mouseOver2()};
+    document.getElementById("plato").onmouseout = function() {mouseOut2()};
+
+    function mouseOver2() {
+        document.getElementById("plato").style.backgroundColor = "#568A35";
+        document.getElementById("plato").style.color = "white";
+        document.getElementById("h2").style.color = "white";
+    }
+    function mouseOut2() {
+        document.getElementById("plato").style.backgroundColor = "white";
+        document.getElementById("plato").style.color = "black";
+        document.getElementById("h2").style.color = "black";
+    }
+    // pannel4
+    document.getElementById("ftm").onmouseover = function() {mouseOver3()};
+    document.getElementById("ftm").onmouseout = function() {mouseOut3()};
+
+    function mouseOver3() {
+        document.getElementById("ftm").style.backgroundColor = "#568A35";
+        document.getElementById("ftm").style.color = "white";
+        document.getElementById("h3").style.color = "white";
+    }
+    function mouseOut3() {
+        document.getElementById("ftm").style.backgroundColor = "white";
+        document.getElementById("ftm").style.color = "black";
+        document.getElementById("h3").style.color = "black";
+    }
+    // pannel5
+    document.getElementById("AG").onmouseover = function() {mouseOver4()};
+    document.getElementById("AG").onmouseout = function() {mouseOut4()};
+
+    function mouseOver4() {
+        document.getElementById("AG").style.backgroundColor = "#568A35";
+        document.getElementById("AG").style.color = "white";
+        document.getElementById("h4").style.color = "white";
+    }
+    function mouseOut4() {
+        document.getElementById("AG").style.backgroundColor = "white";
+        document.getElementById("AG").style.color = "black";
+        document.getElementById("h4").style.color = "black";
+    }
+
+</script>
+<!--�???���?? ?���??-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0QiKCB7UjDbmYY2JrqNk2f9zEWFoKHu4&callback=myMap"></script>
+
+<!-- footer -->
+<!--<footer class="site-footer">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-sm-12 col-md-8">-->
+<!--                <h6>About</h6>-->
+<!--                <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to help the-->
+<!--                    upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or-->
+<!--                    snippets as the code wants to be simple. We will help programmers build up concepts in different-->
+<!--                    programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android,-->
+<!--                    SQL and Algorithm.</p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <hr>-->
+<!--    </div>-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-8 col-sm-6 col-xs-12">-->
+<!--                <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by.-->
+<!--                </p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</footer>-->
+</body>
+</html>

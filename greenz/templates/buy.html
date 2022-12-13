@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GREENZ-ORDER</title>
+  <meta charset="utf-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../static/css/buy.css" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@300&display=swap" rel="stylesheet">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="../static/js/buy.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9F99RNZ84F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9F99RNZ84F');
+    </script>
+  <style>
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+          <div class="navbar-header page-scroll">
+              <button type="button" class="navbar-toggle">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand-md page-scroll nav-logo" href="../templates/main.html">GREENZ</a>
+          </div>
+
+          <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="hidden">
+                      <a class="page-scroll nav-button" href="#page-top"></a>
+                  </li>
+                  <li>
+                      <a class="page-scroll nav-button" href="../templates/main.html">Home</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll nav-button" href="../templates/freshfood.html">Product</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll nav-button" href="../templates/Recipe_List.html">Recipe</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll nav-button" href="../templates/Restaurant_map.html">Restaurant</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll nav-button" href="../templates/cart.html">cart</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+<div class="container" id="zero_line">
+  <h3 style="padding-top: 20px;">Fresh delivery service will be launched <br>in Daejeon/Chungcheong Province!</h3>
+      <div class="row">
+        <div class="col-sm-12">
+          <span class="glyphicon glyphicon-home"></span>
+          <p id="dawn">It will be delivered at dawn from now on.<br>
+            If you order every day before 23:00,<br> You can get it at 7 a.m. the next day!</p>
+        </div>
+      </div>
+</div>
+
+  <div class="container" id="one_line">
+    <h1 class="name">ORDER</h1>
+    <div class="row">
+    <div class="col-sm-12">
+    <hr id="hr1">
+    <h3 class="info">Order Information</h3>
+    <p class="info">(*Display is a required entry)</p>
+    <hr>
+    <form>
+      <div class="form-group box">
+        <label style="font-size: large;">*  an orderer</label>
+        <input type="text" required class="user">
+        </div>
+        <div class="form-group box">
+          <label style="font-size: large;">* phone number</label>
+          <input type="text" required class="user" placeholder="Enter numbers only">
+          </div>
+          <div class="form-group box">
+            <label style="font-size: large;">* Email</label>
+            <input name="email1" required class="in1" type="text"> @ <input class="in" name="email2" type="text">
+            <select id="sel" name="select_email" onChange="selectEmail(this)">
+              <option value="" selected>Choose</option>
+              <option value="naver.com">naver.com</option>
+              <option value="gmail.com">gmail.com</option>
+              <option value="hanmail.com">hanmail.com</option>
+              <option value="1">direct input</option>
+            </select>
+            </div>
+    </form>
+    </div>
+</div>
+</div>
+
+<div class="container" id="two_line">
+  <div class="row">
+  <div class="col-sm-12">
+  <h3 class="info">Shipping information</h3>
+  <p class="info">(* Display is a required entry)</p>
+  <hr>
+  <form>
+    <div class="form-group box">
+      <label style="font-size: large;">* Recipient</label>
+      <input type="text" class="user">
+      </div>
+      <div class="form-group box">
+        <label style="font-size: large;">* Address</label>
+        <input type="text" class="user" placeholder="Road name address">
+        </div>
+        <div class="form-group box">
+          <div class="form-group box">
+            <label style="font-size: large;">* Phone number</label>
+            <input type="text" class="user" placeholder="Enter numbers only">
+            </div>
+          </div>
+          <div class="form-group box">
+            <label style="font-size: large;">Memo</label>
+            <input type="text" class="user1">
+            </div>
+  </form>
+  </div>
+</div>
+</div>
+
+<div class="container" id="three_line">
+  <div class="row">
+  <div class="col-sm-12">
+  <h3 class="info">Payment method selection</h3>
+  <hr>
+  <form>
+    <div class="form-group box">
+      <input type="checkbox" class="check" name="boxes">
+      <label style="font-size: large; margin-left: 25px;">credit card</label>
+      <select id="sel2">
+        <option value="" selected>Choose</option>
+        <option value="NH">NH</option>
+        <option value="Shinhan">Shinhan</option>
+        <option value="Hana">Hana</option>
+        <option value="KB">KB</option>
+      </select>
+
+      <select id="sel3">
+        <option value="single payment" selected>single payment</option>
+        <option value="1m">1m</option>
+        <option value="3m">3m</option>
+        <option value="5m">5m</option>
+        <option value="7m">7m</option>
+      </select>
+      </div>
+
+      <div class="form-group box">
+      <input type="text" class="cardnum" id="cardnum1" placeholder="your card number">
+      <input type="date" class="date">
+      <input type="text" class="cv" placeholder="CVC number">
+      <br>
+      </div>
+
+      <div class="form-group box">
+        <input type="checkbox" class="check" name="boxes">
+        <label style="font-size: large;margin-left: 25px;"> make a deposit</label>
+        <select id="sel4">
+          <option value="" selected>Choose</option>
+          <option value="NH 1234-34-2342-13">NH 1234-34-2342-13</option>
+          <option value="Shinhan 1234-34-2342-13">Shinhan 1234-34-2342-13</option>
+          <option value="Hana 1234-34-2342-13">Hana 1234-34-2342-13</option>
+          <option value="KB 1234-34-2342-13">KB 1234-34-2342-13</option>
+        </select>
+        </div>
+        <div class="form-group box">
+          <input type="checkbox" class="check" name="boxes">
+          <label style="font-size: large; margin-left: 25px;"> account transfer</label>
+          <select id="sel5">
+            <option value="" selected>Choose</option>
+            <option value="NH 1234-34-2342-13">NH 1234-34-2342-13</option>
+            <option value="Shinhan1234-34-2342-13">Shinhan 1234-34-2342-13</option>
+            <option value="Hana 1234-34-2342-13">Hana 1234-34-2342-13</option>
+            <option value="KB 1234-34-2342-13">KB 1234-34-2342-13</option>
+          </select>
+
+          <div class="form-group box">
+            <input type="checkbox" class="check" name="boxes">
+            <label style="font-size: large; margin-left: 25px;">phone payment</label>
+            <select id="sel6">
+              <option value="" selected>Choose</option>
+              <option value="SKT">SKT</option>
+              <option value="KT">KT</option>
+              <option value="LG U+">LG U+</option>
+              <input type="text" id="phone" placeholder="enter phone number">
+            </select>
+            </div>
+  </form>
+
+  </div>
+</div>
+
+</div>
+<input type="submit" id="jumun" class="btn btn-default" onclick="order()" value="Ordering a product!">
+</div>
+
+<footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h6>(Inc)Oho</h6>
+                    <p class="text-justify">Business registration number: 120-00-12345 <br>
+                    hosting services: Oho Corporation | Online Marketing Business Report Number: 1234-cbnu-56789 <br>
+                    28644 1, Chungdae-ro, Seowon-gu, Cheongju-si, Chungcheongbuk-do (S4-1, College of electrical and computer engineering BID.3) <br>
+                    Customer Service: 1, Chungdae-ro, Seowon-gu, Cheongju-si, Chungcheongbuk-do (S4-1, College of electrical and computer engineering BID.3)</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-6 col-xs-12">
+                    <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>

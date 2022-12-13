@@ -1,0 +1,133 @@
+/* navbar design */
+.navbar {
+    padding: 10px 0;
+    background-color: white !important;
+}
+
+.nav-button {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.nav-button:hover {
+    background-color: #F9FAFB !important;
+}
+
+.nav-logo {
+    font-family: "Lucida Handwriting";
+    font-size: 40px;
+    font-weight: bold;
+    color: #568A35;
+    /*�ΰ� ����*/
+    height: 50px;
+    width: 100px;
+}
+
+.nav-logo:hover {
+    text-decoration: none;
+    color: #1A1F27;
+}
+/* footer design */
+.site-footer {
+    background-color: #26272b;
+    padding: 45px 0 20px 0;
+    font-size: 15px;
+    line-height: 24px;
+    color: #737373;
+}
+
+.site-footer hr {
+    border-top-color: #bbb;
+    opacity: 0.5
+}
+
+.site-footer hr.small {
+    margin: 20px 0
+}
+
+.site-footer h6 {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 5px;
+    letter-spacing: 2px
+}
+
+.site-footer .social-icons {
+    text-align: right
+}
+
+.site-footer .social-icons a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 6px;
+    margin-right: 0;
+    border-radius: 100%;
+    background-color: #33353d
+}
+
+.copyright-text {
+    margin: 0
+}
+
+.site-footer .site-footer {
+    text-align: center
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+#content{
+    margin-top: 100px;
+    display: block;
+    position:relative;
+}
+
+img{
+    width: 400px;
+    height: 400px;
+}
+#mainimg{
+    position: relative;
+    left: 33%;
+}
+h2{
+    position: relative;
+    left: 43%;
+    font-family: "Lucida Sans";
+    color: forestgreen;
+    padding:50px 0;
+}
+#introduc{
+    font-family: "Lucida Bright";
+    position: relative;
+    text-align: center;
+    margin: 30px 0;
+}
+#introduc h4{
+    font-weight: bold;
+    text-align: center;
+    margin: 28px 0;
+}
+#address{
+    font-family: "Lucida Bright";
+    position: relative;
+    text-align: center;
+    margin: 100px 0;
+}
+#address h4{
+    font-weight: bold;
+    text-align: center;
+    margin: 28px 0;
+}
+#mapsection{
+    font-family: "Lucida Bright";
+    position: relative;
+    text-align: center;
+    margin: 90px 0;
+    padding-left: 10px;
+}

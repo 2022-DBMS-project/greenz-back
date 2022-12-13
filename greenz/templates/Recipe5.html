@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../static/css/recipe1.css" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="js/kendo.all.min.js"></script>
+  <title>Recipe</title>
+  <!--    title에 레시피 아이콘 추가-->
+  <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Recipe_icon.svg/531px-Recipe_icon.svg.png?20210109132203">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/kendo.all.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9F99RNZ84F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9F99RNZ84F');
+  </script>
+  <style>
+    label{
+      font-weight: lighter;
+    }
+  </style>
+</head>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand-md page-scroll nav-logo" href="../templates/main.html">GREENZ</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="hidden">
+          <a class="page-scroll nav-button" href="#page-top"></a>
+        </li>
+        <li>
+          <a class="page-scroll nav-button" href="./main.html">Home</a>
+        </li>
+        <li>
+          <a class="page-scroll nav-button" href="./freshfood.html">Product</a>
+        </li>
+        <li>
+          <a class="page-scroll nav-button" href="./Recipe_List.html">Recipe</a>
+        </li>
+        <li>
+          <a class="page-scroll nav-button" href="./Restaurant_map.html">Restaurant</a>
+        </li>
+        <li>
+          <a class="page-scroll nav-button" href="./cart.html">cart</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- content -->
+<section id="content">
+  <div class="container" style="align-items: center">
+    <div class="col-lg-12">
+      <div class="snav">
+        <ul>
+          <li><a href="#">Intro</a></li>
+          <li><a href="#Ingre">Ingredients</a></li>
+          <li><a href="#m">Method</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="bfood col-lg-12">
+      <div class="bimg col-lg-4">
+        <img src="../static/src/Vegan-Tofu-Veggie-Egg-Patty-Breakfast-Sandwich.jpg" alt="Recipe1Img" class="img-circle" onmouseenter="zoomIn(event)" onmouseleave="zoomOut(event)">
+      </div>
+      <div class="about">
+        <h2 >Tofu ‘Egg’ Patty Breakfast Sandwich</h2>
+        <p style="font-weight:bold; text-align:center">Looking for a portable savoury sandwich that you can enjoy on the go? Look no further than this veggie-loaded tofu ‘egg’ vegan breakfast sandwich recipe!</p>
+        <p>To create your savoury, omelette-like vegan ‘egg’ patties, you’ll need to sauté the veggies as you process the tofu and spices in a food processor. Once your veggies are ready and the tofu mixture is smooth and creamy, combine together before pouring the mixture into a muffin tin. As your tofu ‘egg’ bakes, you have time to prepare the rest of the ingredients to form your epic vegan breakfast sandwich.</p>
+      </div>
+    </div>
+  </div>
+  <div id="Ingre">
+    <div class="container">
+      <div class="col-lg-12" style="padding:100px;">
+        <h3>Ingredients</h3>
+        <span>( Servings : &nbsp</span>
+        <input type="number" class="form-control" value="1" min="1" id="serve" onclick="Cal_Serve();">
+        <span>)</span>
+        <table class="table table-hover table-striped">
+          <thead>
+          <tr>
+            <th>For the Tofu Veggie "Egg" Patties</th>
+            <th>For the Vegan Breakfast Sandwiches</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><span>0.22</span> Tbsp olive oil</td>
+            <td><span>12.78</span> g vegan mayonnaise</td>
+          </tr>
+          <tr>
+            <td><span>2.78</span> g finely diced white or yellow onion</td>
+            <td><span>0.11</span> Tbsp hot sauce of choice (classic "red hot" sauce and Sriracha both work great)</td>
+          </tr>
+          <tr>
+            <td><span>16.67</span> g finely diced red, yellow, or orange bell pepper</td>
+            <td><span>1</span> vegan English muffins or bagels, sliced and toasted (or as many as needed to serve on demand)</td>
+          </tr>
+          <tr>
+            <td><span>7.78</span> g chopped broccoli florets</td>
+            <td>Baby spinach</td>
+          </tr>
+          <tr>
+            <td><span>3.33</span> g baby spinach, chopped</td>
+            <td>Sliced avocado</td>
+          </tr>
+          <tr>
+            <td><span>0.11</span> (400g) package Nasoya Extra Firm Tofu , drained</td>
+            <td>Sliced tomatoes</td>
+          </tr>
+          <tr>
+            <td><span>3.89</span> g chickpea flour</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span>1.67</span> g nutritional yeast flakes</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span>6.67</span> ml filtered water</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span>0.11</span> Tbsp tahini</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span>0.11</span> tsp apple cider vinegar</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span>0.11</span> tsp garlic powder</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span>0.08</span> tsp sea salt + 1/2 teaspoon black salt (kala namak)*</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span>0.06</span> tsp ground turmeric</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Freshly ground black pepper</td>
+            <td></td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="container" style="margin-bottom: 100px;">
+    <div class="col-lg-12" style="padding:70px;">
+      <h3 id="m">Method</h3>
+      <hr style="margin-top:0; margin-bottom: 30px;">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" onclick="check(this)">
+        <label class="form-check-label" id="m1">
+          1. Preheat the oven to 350F. Lightly grease 9 of the slots in two 6-slot muffin top tins or 9 of the slots in one 12-slot classic muffin tin. If you have muffin top tins, these work best as they yield an “egg” patty that’s perfectly sized for breakfast sandwiches. A regular muffin tin will work in a pinch but you’ll need to smush the egg patties down in your breakfast sandwich.</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" onclick="check2(this)">
+        <label class="form-check-label" id="m2">
+          2. Heat the olive oil in a large sauté pan over medium-high heat.</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" onclick="check3(this)">
+        <label class="form-check-label" id="m3">
+          3. Add the onion, bell pepper, broccoli, and spinach. Season with a pinch of salt and pepper. Sauté for 3 minutes, or until the veggies just barely begin to soften and the spinach wilts (they’ll continue to cook in the oven, so no need to get them too tender at this point). Remove from the heat and set aside.</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" onclick="check4(this)">
+        <label class="form-check-label" id="m4">
+          4. Crumble the tofu into a food processor. Add the chickpea flour, nutritional yeast, water, tahini, vinegar, garlic powder, sea salt + black salt, turmeric, and a few grinds of black pepper. Process for 2 minutes, or until completely smooth, stopping to scrape down the sides of the processor as needed.</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" onclick="check5(this)">
+        <label class="form-check-label" id="m5">
+          5. Spoon the tofu mixture into the pan with the sautéed veggies and stir to combine.</label>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+<script>
+  function zoomIn(event) {
+    event.target.style.transform = "scale(1.2)";
+    event.target.style.zIndex = 1;
+    event.target.style.transition = "all 1s";
+  }
+
+  function zoomOut(event) {
+    event.target.style.transform = "scale(1)";
+    event.target.style.zIndex = 0;
+    event.target.style.transition = "all 1s";
+  }
+
+
+
+  var val=new Array();
+  const nodeList=document.querySelectorAll("span");
+  for(let i=5;i<nodeList.length;i++){
+    val[i]=nodeList[i].innerHTML;
+  }
+  function Cal_Serve(){
+    var quant=document.getElementById("serve").value;
+    for(var i=5;i<nodeList.length;i++){
+      var sum=(parseFloat(val[i]))*(parseFloat(quant));
+      document.querySelectorAll("span")[i].innerHTML=sum;
+    }
+  }
+
+
+  function check(box){
+
+    if(box.checked==true){
+      document.getElementById("m1").style.textDecoration="line-through";
+    }
+    else{
+      document.getElementById("m1").style.textDecoration="none";
+    }
+  }
+  function check2(box){
+
+    if(box.checked==true){
+      document.getElementById("m2").style.textDecoration="line-through";
+    }
+    else{
+      document.getElementById("m2").style.textDecoration="none";
+    }
+  }
+  function check3(box){
+
+    if(box.checked==true){
+      document.getElementById("m3").style.textDecoration="line-through";
+    }
+    else{
+      document.getElementById("m3").style.textDecoration="none";
+    }
+  }
+  function check4(box){
+
+    if(box.checked==true){
+      document.getElementById("m4").style.textDecoration="line-through";
+    }
+    else{
+      document.getElementById("m4").style.textDecoration="none";
+    }
+  }
+  function check5(box){
+
+    if(box.checked==true){
+      document.getElementById("m5").style.textDecoration="line-through";
+    }
+    else{
+      document.getElementById("m5").style.textDecoration="none";
+    }
+  }
+
+
+
+
+</script>
+
+<!-- footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <h6>(Inc)Oho</h6>
+        <p class="text-justify">Business registration number: 120-00-12345 <br>
+          hosting services: Oho Corporation | Online Marketing Business Report Number: 1234-cbnu-56789 <br>
+          28644 1, Chungdae-ro, Seowon-gu, Cheongju-si, Chungcheongbuk-do (S4-1, College of electrical and computer engineering BID.3) <br>
+          Customer Service: 1, Chungdae-ro, Seowon-gu, Cheongju-si, Chungcheongbuk-do (S4-1, College of electrical and computer engineering BID.3)</p>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2022 All Rights Reserved by.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

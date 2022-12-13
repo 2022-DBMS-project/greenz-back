@@ -1,0 +1,168 @@
+*{
+  font-family: 'Hahmlet', serif;
+}
+.navbar {
+    padding: 10px 0;
+    background-color: white !important;
+}
+
+.nav-button {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.nav-button:hover {
+    background-color: #F9FAFB !important;
+}
+
+.nav-logo {
+    font-family: "Lucida Handwriting";
+    font-size: 40px;
+    font-weight: bold;
+    color: #568A35; /*�ΰ� ����*/
+    height: 50px;
+    width: 100px;
+}
+
+.nav-logo:hover {
+    text-decoration: none;
+    color: #1A1F27;
+}
+.name{
+  margin-top: 200px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+#hr1{
+  background-color:#151515;
+  height: 2px;
+}
+.img{
+  margin-left: 60px;
+}
+.cart_name{
+  display: inline;
+  margin-left: 20px;
+}
+.sum_button{
+  background-color: white;
+  font-size: 30px;
+  font-weight: 1000;
+  width: 40px;
+  height: 40px;
+}
+#cart_price1, #cart_price2, #cart_price3, #cart_price4, #cart_price5{
+  display: inline;
+  margin-left: 70px;
+  font-weight: bold;
+  font-size: x-large;
+}
+.sum{
+  display: inline;
+  position: absolute;
+  bottom:100px;
+  left:800px;
+}
+
+#cart_count1, #cart_count2, #cart_count3, #cart_count4, #cart_count5{
+  background-color: white;
+  font-size: large;
+  text-align: center;
+  width: 60px;
+  height: 40px;
+}
+
+.sk2{
+display: inline;
+}
+#one_line
+{
+
+}
+#two_line
+{
+  text-align: right;
+}
+#three_line
+{
+  margin-top: 50px;
+  text-align: right;
+}
+#jm:hover{
+  background-color: black;
+  color:white;
+}
+#jm1:hover{
+  background-color: black;
+  color:white;
+}
+#jm1{
+    font-size: x-large;
+    padding-top: 10px;
+    font-weight: 900;
+    width: 300px;
+    height: 60px;
+}
+#jm{
+    font-size: x-large;
+    padding-top: 10px;
+    font-weight: 900;
+    width: 400px;
+    height: 60px;
+}
+.site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+  margin-top: 150px;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+
+.site-footer hr.small
+{
+  margin:20px 0
+}
+
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+
+.site-footer .social-icons
+{
+  text-align:right
+}
+
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+
+.copyright-text
+{
+  margin:0
+}
+
+.site-footer .site-footer
+{
+  text-align:center
+}

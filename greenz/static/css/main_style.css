@@ -1,0 +1,254 @@
+
+* {
+  font-family: 'Hahmlet', serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  scroll-snap-type: y mandatory;
+}
+
+/* navbar design */
+.navbar {
+  padding: 10px 0;
+  background-color: white !important;
+}
+
+.nav-button {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.nav-button:hover {
+  background-color: #F9FAFB !important;
+}
+
+.nav-logo {
+  font-family: "Lucida Handwriting";
+  font-size: 40px;
+  font-weight: bold;
+  color: #568A35;
+  /*�ΰ� ����*/
+  height: 50px;
+  width: 100px;
+}
+
+.nav-logo:hover {
+  text-decoration: none;
+  color: #1A1F27;
+}
+
+/* brand intro */
+.intro-section {
+  height: 100%;
+  width: 100%;
+  padding-top: 150px;
+  text-align: center;
+
+  background-image: url('/static/src/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.intro-logo {
+  font-family: "Lucida Handwriting";
+  font-size: 150px;
+  font-weight: bold;
+  color: #568A35;
+  margin-bottom: 30px;
+  text-shadow: -5px 0 #fff, 0 5px #fff, 5px 0 #fff, 0 -5px #fff;
+}
+
+.intro-text {
+  margin-top: 30px;
+  font-size: 50px;
+  display: grid;
+  place-items: center;
+  color: white;
+  background-color: #568A35;
+}
+
+.intro-typing {
+  width: 38ch;
+  animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+/* all contents */
+.title-text {
+  font-weight: bold;
+  font-size: 50px;
+  color: #568A35;
+  margin-bottom: 50px;
+}
+
+.sub-text {
+  font-size: 20px;
+}
+
+/* vegan */
+.vegan-section {
+  height: 80%;
+  padding-top: 180px;
+  background: #F9FAFB;
+}
+
+/* histroy */
+.history-section {
+  height: 80%;
+  padding-top: 150px;
+  background: #fff;
+}
+
+/* reason */
+.reason-section {
+  height: 150%;
+  padding-top: 150px;
+  background: #F9FAFB;
+}
+
+/* click */
+.click-section {
+  text-align: center;
+  height: 30%;
+  padding-top: 100px;
+}
+
+.click-div {
+  width: 1000px;
+}
+
+.click-text {
+  font-size: 50px;
+  font-weight: bold;
+  box-sizing: border-box;
+  min-block-size: 100%;
+  min-inline-size: 100%;
+  color: black;
+  box-sizing: 600px;
+}
+
+.click-text:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.click-text::before {
+  transform: scaleX(0);
+  transform-origin: bottom right;
+}
+
+.click-text:hover::before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.click-text::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0 0 0 0;
+  background: #568A35;
+  z-index: -1;
+  transition: transform .3s ease;
+}
+
+.icon {
+  color: white;
+  margin-left: 20px;
+  font-size: 50px;
+  display: inline-block;
+}
+
+.icon:hover {
+  text-decoration: none;
+  color: white;
+}
+
+/* team */
+.team-section {
+  height: 70%;
+  padding-top: 40px;
+  background: #F9FAFB;
+}
+
+.member {
+  border: 10px solid transparent;
+}
+
+.member:hover {
+  border-color: #e2e2e2;
+}
+
+/* footer design */
+.site-footer {
+  background-color: #26272b;
+  padding: 45px 0 20px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #737373;
+}
+
+.site-footer hr {
+  border-top-color: #bbb;
+  opacity: 0.5
+}
+
+.site-footer hr.small {
+  margin: 20px 0
+}
+
+.site-footer h6 {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 2px
+}
+
+.site-footer .social-icons {
+  text-align: right
+}
+
+.site-footer .social-icons a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 6px;
+  margin-right: 0;
+  border-radius: 100%;
+  background-color: #33353d
+}
+
+.copyright-text {
+  margin: 0
+}
+
+.site-footer .site-footer {
+  text-align: center
+}

@@ -1,0 +1,253 @@
+*{
+  font-family: 'Hahmlet', serif;
+}
+.navbar {
+    padding: 10px 0;
+    background-color: white !important;
+}
+
+.nav-button {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.nav-button:hover {
+    background-color: #F9FAFB !important;
+}
+
+.nav-logo {
+    font-family: "Lucida Handwriting";
+    font-size: 40px;
+    font-weight: bold;
+    color: #568A35; /*�ΰ� ����*/
+    height: 50px;
+    width: 100px;
+}
+
+.nav-logo:hover {
+    text-decoration: none;
+    color: #1A1F27;
+}
+.name{
+  margin-top: 150px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+#hr1{
+  background-color:#151515;
+  height: 2px;
+}
+#dawn{
+  margin-top: -78px;
+  margin-left: 300px;
+}
+.box{
+  margin-top: 40px;
+}
+.glyphicon-home
+{
+  color:black;
+  font-size: 50px;
+  margin-left: -600px;
+  margin-top: 30px;
+
+  animation-name : myanim;
+  animation-duration : 4s;
+}
+@keyframes myanim{
+  0% {left : 0px; top: 0px;}
+  100% {left: 270px; top: 0px;}
+}
+.user{
+  position: absolute;
+  left:150px;
+  margin-top: -9px;
+  margin-left: 50px;
+  width: 400px;
+  height: 40px;
+}
+.cardnum{
+  position: absolute;
+  left:150px;
+  margin-top: -9px;
+  margin-left: 50px;
+  width: 170px;
+  height: 40px;
+}
+#footer{
+  height: 800px;
+}
+.date{
+  position: absolute;
+  left:330px;
+  margin-top: -9px;
+  margin-left: 50px;
+  width: 170px;
+  height: 40px;
+}
+#jumun:hover{
+  background-color: black;
+  color:white;
+}
+#jumun{
+  margin-left: 400px;
+  margin-top: 100px;
+  width:300px;
+  height: 60px;
+  font-size: x-large;
+  padding-top: 10px;
+}
+#phone{
+  margin-top: -5px;
+  margin-left: 125px;
+  width: 170px;
+  height: 40px;
+}
+.cv{
+  position: absolute;
+  left:510px;
+  margin-top: -9px;
+  margin-left: 50px;
+  width: 170px;
+  height: 40px;
+}
+.back{
+  position: absolute;
+  background-color: #F1F8E0;
+  width: 1000px;
+  height: 400px;
+}
+.check{
+    position: absolute;
+  width: 18px;
+  height: 18px;
+  padding-right: 20px;
+}
+.user1{
+  position: absolute;
+  left:150px;
+  margin-top: -2px;
+  margin-left: 50px;
+  width: 400px;
+  height: 100px;
+}
+.in1
+{
+  margin-left: 113px;
+  width: 200px;
+  height: 40px;
+  margin-top: -9px;
+}
+.in
+{
+  width: 180px;
+  height: 40px;
+  margin-top: -9px;
+}
+.in:read-only
+{
+  background-color:white;
+}
+#sel
+{
+  margin-top: -4px;
+  padding:7px;
+  height: 40px;
+  vertical-align:middle;
+}
+#sel2{
+  margin-top: -9px;
+  margin-left: 60px;
+  padding:7px;
+  height: 40px;
+  vertical-align:middle;
+}
+#sel3{
+  margin-top: -9px;
+  margin-left: 10px;
+  padding:7px;
+  height: 40px;
+  vertical-align:middle;
+}
+#sel4, #sel5, #sel6{
+  position: absolute;
+  left:150px;
+  margin-top: -5px;
+  margin-left: 50px;
+  padding:7px;
+  height: 40px;
+  vertical-align:middle;
+}
+.info{
+  display: inline;
+}
+#hr1{
+  margin-bottom: 80px;
+}
+#zero_line{
+  margin-top: 150px;
+  text-align: center;
+  width: 800px;
+  height: 200px;
+  background-color: #F5FBEF;
+}
+#two_line, #three_line{
+  margin-top: 150px;
+}
+.site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+  margin-top: 150px;
+}
+
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+
+.site-footer hr.small
+{
+  margin:20px 0
+}
+
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+
+.site-footer .social-icons
+{
+  text-align:right
+}
+
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+
+.copyright-text
+{
+  margin:0
+}
+
+.site-footer .site-footer
+{
+  text-align:center
+}
