@@ -6,9 +6,9 @@
 ### Django 실행 방법
 1. 데이터베이스 설정
     1) pip install mysqlclient
-    - 라이브러리 설치하기
+         - 라이브러리 설치하기
     2) touch my_settings
-    - manage.py 파일이 있는 폴더(프로젝트 최상단)에 my_settings 파일 만들어주기
+         - manage.py 파일이 있는 폴더(프로젝트 최상단)에 my_settings 파일 만들어주기
     3) my_settings 파일에 데이터베이스 정보 넣기
     ```
    DATABASES = {   
@@ -22,7 +22,6 @@
         }
     }
    ```
-<br>
 
 2. 모델 적용하기   
     1) python manage.py makemigrations   
