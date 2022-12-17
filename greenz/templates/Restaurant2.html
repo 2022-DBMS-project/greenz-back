@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="../static/css/restaurant1.css" type="text/css">
+    <link rel="stylesheet" href="/static/css/restaurant1.css" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9F99RNZ84F"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -32,7 +33,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand-md page-scroll nav-logo" href="#page-top">GREENZ</a>
+            <a class="navbar-brand-md page-scroll nav-logo" href="/greenz/">GREENZ</a>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -41,19 +42,22 @@
                     <a class="page-scroll nav-button" href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll nav-button" href="../templates/main.html">Home</a>
+                    <a class="page-scroll nav-button" href="/greenz/product/">Product</a>
                 </li>
                 <li>
-                    <a class="page-scroll nav-button" href="../templates/freshfood.html">Product</a>
+                    <a class="page-scroll nav-button" href="/greenz/recipe/">Recipe</a>
                 </li>
                 <li>
-                    <a class="page-scroll nav-button" href="./Recipe_List.html">Recipe</a>
+                    <a class="page-scroll nav-button" href="/greenz/restaurant/">Restaurant</a>
                 </li>
                 <li>
-                    <a class="page-scroll nav-button" href="./Restaurant_map.html">Restaurant</a>
+                    <a class="page-scroll nav-button" href="/greenz/cart/">Cart</a>
                 </li>
                 <li>
-                    <a class="page-scroll nav-button" href="../templates/cart.html">cart</a>
+                    <a class="page-scroll nav-button" href="/greenz/mypage/">My Page</a>
+                </li>
+                <li>
+                    <a class="page-scroll nav-button" href="/greenz/login/">Login</a>
                 </li>
             </ul>
         </div>
@@ -64,17 +68,17 @@
     <div class="container">
         <div class="col-lg-12">
             <div id="mainimg">
-                <img src="../static/src/localeatimg.jpg" alt="logoimg" class="img-circle">
+                <img src="/static/src/saalad.gif" alt="logoimg" class="img-circle">
             </div>
-            <h2>&nbsp; &nbsp;local Eat&nbsp;&nbsp;&nbsp;&nbsp; </h2>
+            <h2>{{store.name}}</h2>
             <div id="address">
                 <h4>address</h4>
-                <p>33, Hallimmal-gil, Seongdong-gu, Seoul, Republic of Korea</p>
+                <p>{{store.address}}</p>
             </div>
             <div id="introduc">
                 <h4>about</h4>
-                <p>Locallet is a combination of local and eat, and it is a deli market that provides healthy food using local ingredients. </p>
-                <p>And on the second Sunday of every month, we communicate with farmers and customers through participation in the farmer's market, which I talk to at Marronier Park.</p>
+                <p style="padding-left:100px; padding-right:100px;">{{store.description}} </p>
+<!--                <p>And on the second Sunday of every month, we communicate with farmers and customers through participation in the farmer's market, which I talk to at Marronier Park.</p>-->
 
             </div>
             <div id="mapsection">
@@ -87,7 +91,7 @@
 <script>
     function myMap() {
         var mapCanvas = document.getElementById("map");
-        var myCenter = new google.maps.LatLng(37.54091025638059	,	127.01477757051197 );
+        var myCenter = new google.maps.LatLng({{store.latitude}}	,	{{store.longtitude}} );
         var mapOptions = {
             center:  myCenter,
             zoom: 18
@@ -102,7 +106,7 @@
 
 </script>
 <!--�??���? ?���?-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0QiKCB7UjDbmYY2JrqNk2f9zEWFoKHu4&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLWjnJCKvCSo2urY-ulSPm-kedV2jGXSk&callback=myMap"></script>
 
 
 <!-- footer -->

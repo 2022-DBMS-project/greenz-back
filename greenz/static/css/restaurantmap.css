@@ -15,6 +15,7 @@
     background-color: #F9FAFB !important;
 }
 
+
 .nav-logo {
     font-family: "Lucida Handwriting";
     font-size: 40px;
@@ -97,7 +98,7 @@ html{
 
 }
 .panel1::-webkit-scrollbar{
-    /*?Š¤?¬ë¡? ?•ˆë³´ì´ê²? ?•˜?Š” ë¶?ë¶?*/
+    /*?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½ë³´ì´ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ï¿½?ï¿½?*/
     display:none;
 }
 .panel1 p{

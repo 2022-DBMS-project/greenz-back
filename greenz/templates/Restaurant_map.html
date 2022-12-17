@@ -10,10 +10,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="js/kendo.all.min.js"></script>
+    <script src="/static/js/restaurant.js"></script>
     <title>RestaurantMap</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/kendo.all.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLWjnJCKvCSo2urY-ulSPm-kedV2jGXSk&callback=myMap"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9F99RNZ84F"></script>
     <script>
@@ -75,41 +76,47 @@
             <div class="container">
                 <div class="panel1">
                     <div class="panel-group">
-                        <div class="panel panel-default" onclick="location.href='./Restaurant1.html'">
-                            <div class="panel-body" id="chick" >
-                                <h4 style="font-size: 25px;">chick peace</h4>
-                                <p class="addr">69, Gangnam-daero 152-gil, Gangnam-gu, Seoul, Republic of Korea</p>
-                                <p class="ht" id="h"><img src="/static/src/icons8-greek-salad-48.png" alt="greeksaladimg">#VeganRestaurant #MediterraneanRestaurant</p>
-                            </div>
+                        {% for res in info_res %}
+                        <div class="panel panel-default restaurant" >
+                            <form class="panel-body" id="{{res.name}}" method="GET" action="{% url 'restaurant2' %}">
+                                <h4 style="font-size: 25px;">{{res.name}}</h4>
+                                <p class="addr">{{res.address}}</p>
+                                <p class="ht" class="h"><img src="/static/src/icons8-greek-salad-48.png" alt="greeksaladimg">{{res.keyword}}</p>
+                                <input type="hidden" name="id" value="{{res.name}}"/>
+                                <button style="border: 2px solid #04AA6D; background-color:white; padding: 8px 14px; font-size: 12px; border-radius: 5px; float:right;">See More</button>
+                            </form>
                         </div>
-                        <div class="panel panel-default" onclick="location.href='./Restaurant2.html'">
-                            <div class="panel-body" id="localeat">
-                                <h4 style="font-size: 25px;">local Eat</h4>
-                                <p class="addr">33, Hallimmal-gil, Seongdong-gu, Seoul, Republic of Korea</p>
-                                <p class="ht" id="h1"><img src="/static/src/icons8-oak-leaf-24.png" alt="leafimg">#OksuroCaleat #VeganRestaurant</p>
-                            </div>
-                        </div>
-                        <div class="panel panel-default" onclick="location.href='./Restaurant3.html'">
-                            <div class="panel-body" id="plato">
-                                <h4 style="font-size: 25px;">plat[o:]</h4>
-                                <p class="addr">103-1, Yangjaecheon-ro, Seocho-gu, Seoul, Republic of Korea</p>
-                                <p class="ht" id="h2"><img src="/static/src/icons8-egg-24.png" alt="eggimg">#YangjaeVeganCafe #YangjaeBrunchCafe</p>
-                            </div>
-                        </div>
-                        <div class="panel panel-default" onclick="location.href='./Restaurant4.html'">
-                            <div class="panel-body" id="ftm">
-                                <h4 style="font-size: 25px;">FOOD DOES MATTER</h4>
-                                <p class="addr">10, Seorae-ro 1-gil, Seocho-gu, Seoul, Republic of Korea</p>
-                                <p class="ht" id="h3"><img src="/static/src/icons8-vegan-24.png" alt="veganimg">#Seorae Village's famous restaurant</p>
-                            </div>
-                        </div>
-                        <div class="panel panel-default" onclick="location.href='./Restaurant5.html'">
-                            <div class="panel-body" id="AG">
-                                <h4 style="font-size: 25px;">around green</h4>
-                                <p class="addr">79, Mangwon-ro, Mapo-gu, Seoul, Republic of Korea</p>
-                                <p class="ht" id="h4"><img src="/static/src/icons8-pizza-24.png" alt="pizzaimg">#AroundGreen #VeganPizza</p>
-                            </div>
-                        </div>
+                        {% endfor %}
+
+
+<!--                        <div class="panel panel-default" onclick="location.href='./Restaurant2.html'">-->
+<!--                            <div class="panel-body" id="localeat">-->
+<!--                                <h4 style="font-size: 25px;">local Eat</h4>-->
+<!--                                <p class="addr">33, Hallimmal-gil, Seongdong-gu, Seoul, Republic of Korea</p>-->
+<!--                                <p class="ht" id="h1"><img src="/static/src/icons8-oak-leaf-24.png" alt="leafimg">#OksuroCaleat #VeganRestaurant</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="panel panel-default" onclick="location.href='./Restaurant3.html'">-->
+<!--                            <div class="panel-body" id="plato">-->
+<!--                                <h4 style="font-size: 25px;">plat[o:]</h4>-->
+<!--                                <p class="addr">103-1, Yangjaecheon-ro, Seocho-gu, Seoul, Republic of Korea</p>-->
+<!--                                <p class="ht" id="h2"><img src="/static/src/icons8-egg-24.png" alt="eggimg">#YangjaeVeganCafe #YangjaeBrunchCafe</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="panel panel-default" onclick="location.href='./Restaurant4.html'">-->
+<!--                            <div class="panel-body" id="ftm">-->
+<!--                                <h4 style="font-size: 25px;">FOOD DOES MATTER</h4>-->
+<!--                                <p class="addr">10, Seorae-ro 1-gil, Seocho-gu, Seoul, Republic of Korea</p>-->
+<!--                                <p class="ht" id="h3"><img src="/static/src/icons8-vegan-24.png" alt="veganimg">#Seorae Village's famous restaurant</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="panel panel-default" onclick="location.href='./Restaurant5.html'">-->
+<!--                            <div class="panel-body" id="AG">-->
+<!--                                <h4 style="font-size: 25px;">around green</h4>-->
+<!--                                <p class="addr">79, Mangwon-ro, Mapo-gu, Seoul, Republic of Korea</p>-->
+<!--                                <p class="ht" id="h4"><img src="/static/src/icons8-pizza-24.png" alt="pizzaimg">#AroundGreen #VeganPizza</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                     </div>
                 </div>
@@ -118,6 +125,10 @@
     </div>
 </section>
 <script>
+    var markers = []
+    var originlist = []
+
+
     function myMap() {
         var mapCanvas = document.getElementById("map");
         var myCenter = new google.maps.LatLng(37.517565860261115,128.97512010856524 );
@@ -125,24 +136,20 @@
             center: myCenter,
             zoom: 13,
         };
+
         var map = new google.maps.Map(mapCanvas, mapOptions);
 
-        var markers = [
-            new google.maps.LatLng	(	37.519097598426434	,	127.02472486215174	)	,
-            new google.maps.LatLng	(	 37.54091025638059	,	127.01477757051197	)	,
-            new google.maps.LatLng	(	37.476545573523595	,	127.04019079188957	)	,
-            new google.maps.LatLng	(	37.49625292942323	,	 126.99762806371254	)	,
-            new google.maps.LatLng	(	37.55760497996829	,	126.90559090235266	)	,
 
-        ];
+        {% for res in info_res %}
 
-        var originlist = [
-            ['chick peace','#VeganRestaurant #MediterraneanRestaurant','../static/src/icons8-greek-salad-48.png'],
-            ['local eat','#VeganRestaurant #OksuroCaleat','../static/src/icons8-oak-leaf-24.png'],
-            ['plat [o:]','#YangjaeVeganCafe #YangjaeBrunchCafe','../static/src/icons8-egg-24.png'],
-            ['FOOD DOES MATER','#Seorae Village\'s famous restaurant','../static/src/icons8-vegan-24.png'],
-            ['around green','#AroundGreen #VeganPizza','../static/src/icons8-pizza-24.png'],
-        ];
+        markers.push(new google.maps.LatLng	(	{{res.latitude}}	,	{{res.longtitude}}	))
+
+        var origin = ['{{res.name}}', '{{res.keyword}}', '/static/src/icons8-greek-salad-48.png']
+        originlist.push(origin)
+
+        {% endfor %}
+
+
 
         var marker, i, infowindow;
 
@@ -163,80 +170,87 @@
 
     }
 // pannel1
-    document.getElementById("chick").onmouseover = function() {mouseOver()};
-    document.getElementById("chick").onmouseout = function() {mouseOut()};
+// 클릭할 떄 색 바뀌는거 시간 나면 하기
+    {% for res in info_res %}
+
+    document.getElementById("{{res.name}}").onmouseover = function() {mouseOver()};
+    document.getElementById("{{res.name}}").onmouseout = function() {mouseOut()};
 
 
     function mouseOver() {
-        document.getElementById("chick").style.backgroundColor = "#568A35";
-        document.getElementById("chick").style.color = "white";
-        document.getElementById("h").style.color = "white";
+        document.getElementById("{{res.name}}").style.backgroundColor = "#568A35";
+        document.getElementById("{{res.name}}").style.color = "white";
+        document.getElementById("{{res.name}}").style.color = "white";
     }
     function mouseOut() {
-        document.getElementById("chick").style.backgroundColor = "white";
-        document.getElementById("chick").style.color = "black";
-        document.getElementById("h").style.color = "black";
+        document.getElementById("{{res.name}}").style.backgroundColor = "white";
+        document.getElementById("{{res.name}}").style.color = "black";
+        document.getElementsByClassName("h").style.color = "black";
     }
-    // pannel2
-    document.getElementById("localeat").onmouseover = function() {mouseOver1()};
-    document.getElementById("localeat").onmouseout = function() {mouseOut1()};
 
-    function mouseOver1() {
-        document.getElementById("localeat").style.backgroundColor = "#568A35";
-        document.getElementById("localeat").style.color = "white";
-        document.getElementById("h1").style.color = "white";
-    }
-    function mouseOut1() {
-        document.getElementById("localeat").style.backgroundColor = "white";
-        document.getElementById("localeat").style.color = "black";
-        document.getElementById("h1").style.color = "black";
-    }
-    // pannel3
-    document.getElementById("plato").onmouseover = function() {mouseOver2()};
-    document.getElementById("plato").onmouseout = function() {mouseOut2()};
+    {% endfor %}
 
-    function mouseOver2() {
-        document.getElementById("plato").style.backgroundColor = "#568A35";
-        document.getElementById("plato").style.color = "white";
-        document.getElementById("h2").style.color = "white";
-    }
-    function mouseOut2() {
-        document.getElementById("plato").style.backgroundColor = "white";
-        document.getElementById("plato").style.color = "black";
-        document.getElementById("h2").style.color = "black";
-    }
-    // pannel4
-    document.getElementById("ftm").onmouseover = function() {mouseOver3()};
-    document.getElementById("ftm").onmouseout = function() {mouseOut3()};
 
-    function mouseOver3() {
-        document.getElementById("ftm").style.backgroundColor = "#568A35";
-        document.getElementById("ftm").style.color = "white";
-        document.getElementById("h3").style.color = "white";
-    }
-    function mouseOut3() {
-        document.getElementById("ftm").style.backgroundColor = "white";
-        document.getElementById("ftm").style.color = "black";
-        document.getElementById("h3").style.color = "black";
-    }
-    // pannel5
-    document.getElementById("AG").onmouseover = function() {mouseOver4()};
-    document.getElementById("AG").onmouseout = function() {mouseOut4()};
+<!--    // pannel2-->
+<!--    document.getElementById("localeat").onmouseover = function() {mouseOver1()};-->
+<!--    document.getElementById("localeat").onmouseout = function() {mouseOut1()};-->
 
-    function mouseOver4() {
-        document.getElementById("AG").style.backgroundColor = "#568A35";
-        document.getElementById("AG").style.color = "white";
-        document.getElementById("h4").style.color = "white";
-    }
-    function mouseOut4() {
-        document.getElementById("AG").style.backgroundColor = "white";
-        document.getElementById("AG").style.color = "black";
-        document.getElementById("h4").style.color = "black";
-    }
+<!--    function mouseOver1() {-->
+<!--        document.getElementById("localeat").style.backgroundColor = "#568A35";-->
+<!--        document.getElementById("localeat").style.color = "white";-->
+<!--        document.getElementById("h1").style.color = "white";-->
+<!--    }-->
+<!--    function mouseOut1() {-->
+<!--        document.getElementById("localeat").style.backgroundColor = "white";-->
+<!--        document.getElementById("localeat").style.color = "black";-->
+<!--        document.getElementById("h1").style.color = "black";-->
+<!--    }-->
+<!--    // pannel3-->
+<!--    document.getElementById("plato").onmouseover = function() {mouseOver2()};-->
+<!--    document.getElementById("plato").onmouseout = function() {mouseOut2()};-->
+
+<!--    function mouseOver2() {-->
+<!--        document.getElementById("plato").style.backgroundColor = "#568A35";-->
+<!--        document.getElementById("plato").style.color = "white";-->
+<!--        document.getElementById("h2").style.color = "white";-->
+<!--    }-->
+<!--    function mouseOut2() {-->
+<!--        document.getElementById("plato").style.backgroundColor = "white";-->
+<!--        document.getElementById("plato").style.color = "black";-->
+<!--        document.getElementById("h2").style.color = "black";-->
+<!--    }-->
+<!--    // pannel4-->
+<!--    document.getElementById("ftm").onmouseover = function() {mouseOver3()};-->
+<!--    document.getElementById("ftm").onmouseout = function() {mouseOut3()};-->
+
+<!--    function mouseOver3() {-->
+<!--        document.getElementById("ftm").style.backgroundColor = "#568A35";-->
+<!--        document.getElementById("ftm").style.color = "white";-->
+<!--        document.getElementById("h3").style.color = "white";-->
+<!--    }-->
+<!--    function mouseOut3() {-->
+<!--        document.getElementById("ftm").style.backgroundColor = "white";-->
+<!--        document.getElementById("ftm").style.color = "black";-->
+<!--        document.getElementById("h3").style.color = "black";-->
+<!--    }-->
+<!--    // pannel5-->
+<!--    document.getElementById("AG").onmouseover = function() {mouseOver4()};-->
+<!--    document.getElementById("AG").onmouseout = function() {mouseOut4()};-->
+
+<!--    function mouseOver4() {-->
+<!--        document.getElementById("AG").style.backgroundColor = "#568A35";-->
+<!--        document.getElementById("AG").style.color = "white";-->
+<!--        document.getElementById("h4").style.color = "white";-->
+<!--    }-->
+<!--    function mouseOut4() {-->
+<!--        document.getElementById("AG").style.backgroundColor = "white";-->
+<!--        document.getElementById("AG").style.color = "black";-->
+<!--        document.getElementById("h4").style.color = "black";-->
+<!--    }-->
 
 </script>
 <!--�???���?? ?���??-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0QiKCB7UjDbmYY2JrqNk2f9zEWFoKHu4&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLWjnJCKvCSo2urY-ulSPm-kedV2jGXSk&callback=myMap"></script>
 
 <!-- footer -->
 <!--<footer class="site-footer">-->

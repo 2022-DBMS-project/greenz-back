@@ -1,3 +1,4 @@
+
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
@@ -5,6 +6,8 @@ from rest_framework.exceptions import AuthenticationFailed
 from django.db import connection
 from django.contrib import messages
 from greenz.models import User
+from .models import RMAP
+from django.views import View
 
 
 # main page
@@ -33,10 +36,12 @@ def recipe(request):
 
 # restaurant list page
 def restaurant(request):
+    info_res = RMAP.objects.all()  # RMAP data 불러오기
     if request.COOKIES.get('id'):
         return render(request, 'Restaurant_map.html', context={'text': 'Logout'})
     else:
-        return render(request, 'Restaurant_map.html', context={'text': 'Login'})
+        return render(request, 'Restaurant_map.html', context={'text': 'Login', 'info_res': info_res})
+
 
 
 # cart page
@@ -81,6 +86,7 @@ def join_view(request):
     return render(request, 'main.html')
 
 
+
 # login page
 @csrf_exempt
 def login(request):
@@ -114,3 +120,12 @@ def login_view(request):
     else:
         messages.add_message(request, messages.WARNING, '비밀번호가 잘못되었습니다.')
         return render(request, 'login.html', context={'text': 'Login'})
+
+def get_post(request):
+    global store
+
+    store_id = request.GET.get('id', None)
+    store = RMAP.objects.get(name=store_id)
+
+    return render(request, 'Restaurant2.html', context={'store': store})
+
