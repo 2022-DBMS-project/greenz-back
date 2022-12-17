@@ -138,7 +138,8 @@ class Status(models.Model):
 
 
 class User(models.Model):
-    id = models.CharField(primary_key=True, max_length=45)
+    uid = models.AutoField(primary_key=True)
+    id = models.CharField(max_length=45)
     password = models.CharField(max_length=45, blank=True, null=True)
     name = models.CharField(max_length=45, blank=True, null=True)
     email = models.CharField(max_length=90, blank=True, null=True)

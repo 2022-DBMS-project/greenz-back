@@ -23,6 +23,12 @@
         gtag('js', new Date());
 
         gtag('config', 'G-9F99RNZ84F');
+
+        window.setTimeout(function() {
+            $(".alert-auto-dismissible").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 2000);
     </script>
 </head>
 
@@ -31,6 +37,15 @@
 
     <!-- navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-auto-dismissible alert-dismissible notification-container text-center" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
+
         <div class="container">
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle">
@@ -62,7 +77,7 @@
                         <a class="page-scroll nav-button" href="/greenz/mypage/">My Page</a>
                     </li>
                     <li>
-                        <a class="page-scroll nav-button" href="/greenz/login/">Login</a>
+                        <a class="page-scroll nav-button" href="/greenz/login/">{{text}}</a>
                     </li>
                 </ul>
             </div>

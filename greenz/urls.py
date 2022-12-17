@@ -10,7 +10,9 @@ urlpatterns = [
     path('restaurant/', views.restaurant, name='restaurant_list'),
     path('cart/', views.cart, name='cart'),
     path('mypage/', views.mypage, name='mypage'),
-    path('login/', views.login, name='login')
+    path('login/', views.login, name='login'),
+    path('join_view', views.join_view, name='join'),
+    path('login_view', views.login_view, name='login'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
