@@ -77,14 +77,12 @@
                 <div class="panel1">
                     <div class="panel-group">
                         {% for res in info_res %}
-                        <div class="panel panel-default restaurant" >
-                            <form class="panel-body" id="{{res.name}}" method="GET" action="{% url 'restaurant2' %}">
+                        <div class="panel panel-default restaurant" onclick="location.href='/greenz/list_restaurant/{{res.id}}'">
+                            <div class="panel-body" id="{{res.name}}">
                                 <h4 style="font-size: 25px;">{{res.name}}</h4>
                                 <p class="addr">{{res.address}}</p>
                                 <p class="ht" class="h"><img src="/static/src/icons8-greek-salad-48.png" alt="greeksaladimg">{{res.keyword}}</p>
-                                <input type="hidden" name="id" value="{{res.name}}"/>
-                                <button style="border: 2px solid #04AA6D; background-color:white; padding: 8px 14px; font-size: 12px; border-radius: 5px; float:right;">See More</button>
-                            </form>
+                            </div>
                         </div>
                         {% endfor %}
 

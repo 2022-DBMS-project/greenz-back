@@ -6,9 +6,6 @@ from rest_framework.exceptions import NotFound
 from django.db import connection
 from django.contrib import messages
 from greenz.models import *
-
-
-from .models import RMAP, CartItem, Cart, Orders, Product
 from django.views import View
 
 
@@ -69,10 +66,16 @@ def recipe(request):
 def restaurant(request):
     info_res = RMAP.objects.all()  # RMAP data 불러오기
     if request.COOKIES.get('id'):
-        return render(request, 'Restaurant_map.html', context={'text': 'Logout'})
+        return render(request, 'Restaurant_map.html', context={'text': 'Logout', 'info_res': info_res})
     else:
         return render(request, 'Restaurant_map.html', context={'text': 'Login', 'info_res': info_res})
 
+
+def list_restaurant(request, rmap_id):
+
+    store = RMAP.objects.get(id=rmap_id)
+
+    return render(request, 'Restaurant2.html', context={'store': store})
 
 
 # cart page
@@ -157,14 +160,6 @@ def login_view(request):
     else:
         messages.add_message(request, messages.WARNING, '비밀번호가 잘못되었습니다.')
         return render(request, 'login.html', context={'text': 'Login'})
-
-def get_post(request):
-    global store
-
-    store_id = request.GET.get('id', None)
-    store = RMAP.objects.get(name=store_id)
-
-    return render(request, 'Restaurant2.html', context={'store': store})
 
 #
 # def _cart_id(request):
