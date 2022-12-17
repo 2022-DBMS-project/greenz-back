@@ -68,12 +68,12 @@
       </div>
   </nav>
 
-  {% if not cart_items %}
+
   <div class="container" id="one_line">
     <h1 class="name">Cart</h1>
     <div class="row">
 
-
+        {% if not cart_items %}
             <div class="text-center">
                 <br>
                 <h1 class="text-center">
@@ -82,9 +82,9 @@
             </div>
 
         {% else %}
+            <hr id="hr1">
             {% for cart_item in cart_items %}
-                <div class="col-sm-12">
-                    <hr id="hr1">
+               <div class="col-sm-12">
                     <img class="img" src="{{cart_item.product.image}}" width="150" height="150" class="img-rectangle">
                     <h4 class="cart_name">{{cart_item.product.name}}</h4>
                     <form class="form-inline sum">
@@ -92,12 +92,14 @@
                           <button class="btn btn-default sum_button" type ="button" onclick="{ %url 'cart:add_cart' cart_item.product.id %}">+</button>
                           <input type="text" class="form-control" id="cart_count1" value="{{cart_item.quantity}}" readonly="readonly"/>
                           <button class="btn btn-default sum_button" type="button" onclick="CalCountminus(1);">-</button>
-                          <h4 id="cart_price1">{{cart_item.sub_total}}</h4>
+                          <h4 id="cart_price1">{{cart_item.sub_total|floatformat}}</h4>
                         </div>
                     </form>
                     <hr>
-                </div>
+               </div>
             {% endfor %}
+
+
 <!--        <div class="col-sm-12">-->
 <!--            <img class="img" src="/static/src/avocado.jpg" width="150" height="150" class="img-rectangle">-->
 <!--            <h4 class="cart_name">avocado 200g(1ea)</h4>-->
@@ -111,7 +113,7 @@
 <!--            </form>-->
 <!--            <hr>-->
 <!--        </div>-->
-<!--    -->
+
 <!--        <div class="col-sm-12">-->
 <!--            <img class="img" src="/static/src/cabbage.jpg" width="150" height="150" class="img-rectangle">-->
 <!--            <h4 class="cart_name">500g of shredded cabbage</h4>-->
@@ -125,7 +127,7 @@
 <!--            </form>-->
 <!--            <hr>-->
 <!--        </div>-->
-<!--    -->
+
 <!--        <div class="col-sm-12">-->
 <!--            <img class="img" src="/static/src/hot.jpg" width="150" height="150" class="img-rectangle">-->
 <!--            <h4 class="cart_name">The original hot sauce</h4>-->
@@ -139,7 +141,7 @@
 <!--            </form>-->
 <!--            <hr>-->
 <!--        </div>-->
-<!--    -->
+
 <!--        <div class="col-sm-12">-->
 <!--            <img class="img" src="/static/src/mayo.jpg" width="150" height="150" class="img-rectangle">-->
 <!--            <h4 class="cart_name">Vegan mayo</h4>-->
@@ -158,14 +160,14 @@
 </div>
 
   <div class="container" id="two_line">
-    <p style="display: inline;"> the amount of goods <p style="display: inline;" id="sk">17932</p></p>
+    <p style="display: inline;"> the amount of goods <p style="display: inline;" id="sk">{{ noship_total|floatformat }}</p></p>
     <p style="display: inline;"> The delivery charge <p style="display: inline;">2000</p></p>
-    <h3 style="display: inline;"> Estimated amount of payment <p style="display: inline;" id="result_price">{{ total }}</p></h3>
+    <h3 style="display: inline;"> Estimated amount of payment <p style="display: inline;" id="result_price">{{ ship_total|floatformat }}</p></h3>
   </div>
 
   <div class="container" id="three_line">
-    <a id="jm1" onclick="recipe()" class="btn btn-default">Check the recipe</a>
-    <a id="jm" href="{% url 'buy' %}" class="btn btn-default">Ordering a product</a>
+<!--    <a id="jm1" onclick="recipe()" class="btn btn-default">Check the recipe</a>-->
+    <a id="jm" href="/greenz/buy/{{cart_id}}" class="btn btn-default">Ordering a product</a>
 
   </div>
 

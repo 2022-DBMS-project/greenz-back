@@ -3,18 +3,15 @@ from django.db import models
 
 class Cart(models.Model):
     id = models.AutoField(primary_key=True)
-    user_id = models.ForeignKey('User', models.DO_NOTHING)
+    user = models.ForeignKey('User', models.DO_NOTHING)
 
     class Meta:
         managed = False
         db_table = 'cart'
 
-    def __str__(self):
-        return self.id
-
 
 class CartItem(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     quantity = models.IntegerField(blank=True, null=True)
     cart = models.ForeignKey(Cart, models.DO_NOTHING)
     product = models.ForeignKey('Product', models.DO_NOTHING)
@@ -207,3 +204,11 @@ class SourceList(models.Model):
     class Meta:
         managed = False
         db_table = 'source_list'
+
+
+class RecipeList(models.Model):
+    id = models.IntegerField(primary_key=True)
+
+    class Meta:
+        managed = False
+        db_table = 'recipe_list'

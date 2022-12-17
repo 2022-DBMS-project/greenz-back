@@ -39,7 +39,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand-md page-scroll nav-logo" href="../templates/main.html">GREENZ</a>
+              <a class="navbar-brand-md page-scroll nav-logo" href="/greenz/">GREENZ</a>
           </div>
 
           <div class="collapse navbar-collapse">
@@ -48,19 +48,22 @@
                       <a class="page-scroll nav-button" href="#page-top"></a>
                   </li>
                   <li>
-                      <a class="page-scroll nav-button" href="../templates/main.html">Home</a>
+                      <a class="page-scroll nav-button" href="/greenz/product/">Product</a>
                   </li>
                   <li>
-                      <a class="page-scroll nav-button" href="../templates/freshfood.html">Product</a>
+                      <a class="page-scroll nav-button" href="/greenz/recipe/">Recipe</a>
                   </li>
                   <li>
-                      <a class="page-scroll nav-button" href="../templates/Recipe_List.html">Recipe</a>
+                      <a class="page-scroll nav-button" href="/greenz/restaurant/">Restaurant</a>
                   </li>
                   <li>
-                      <a class="page-scroll nav-button" href="../templates/Restaurant_map.html">Restaurant</a>
+                      <a class="page-scroll nav-button" href="/greenz/cart/">Cart</a>
                   </li>
                   <li>
-                      <a class="page-scroll nav-button" href="../templates/cart.html">cart</a>
+                      <a class="page-scroll nav-button" href="/greenz/mypage/">My Page</a>
+                  </li>
+                  <li>
+                      <a class="page-scroll nav-button" href="/greenz/login/">{{text}}</a>
                   </li>
               </ul>
           </div>
@@ -69,9 +72,9 @@
 
   <div class="container cycle-slideshow" id="one" data-cycle-fx="scrollHorz"
     data-cycle-pause-on-hover="true" data-cycle-speed="500" data-cycle-timeout="2300">
-        <img src="../static/src/banner_3.jpg">
-        <img src="../static/src/banner_2.jpg">
-        <img src="../static/src/banner_1.jpg">
+        <img src="/static/src/banner_3.jpg">
+        <img src="/static/src/banner_2.jpg">
+        <img src="/static/src/banner_1.jpg">
   </div>
 
   <div class="container text-center">
@@ -80,159 +83,167 @@
       <ul>
       <li>ALL PRODUCTS</li>
       <hr>
-      <li><a href="freshfood.html">FRESH FOOD</a></li>
-      <li><a href="source.html">SOURCE</a></li>
+      <li><a href="/greenz/product/">FRESH FOOD</a></li>
+      <li><a href="/greenz/source/">SOURCE</a></li>
     </ul>
     </div>
 
 <div class="col-sm-9">
-  <div id="one_line">
-    <h3 id="all">SOURCE</h3>
-    <div class="row">
-    <div class="col-sm-3 img1">
-    <a href="../templates/mayo.html"><img src="../static/src/mayo.jpg" class="img-rectangle img-responsive"></a>
-    <div class="pro1">
-      <a href="">
-        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-    </div>
-    <div class="intro">
-      <p class="pro_name">Vegan mayo</p>
-      <p class="price">4,980</p><p class="won">won</p>
-    </div>
+ <div id="one_line">
+        <h3 id="all">SOURCE</h3>
+
+        <div class="row">
+            {% for res in source_list %}
+                {% if forloop.counter == 5 or forloop.counter == 9 or forloop.counter == 14 or forloop.counter == 19 %}
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                {% endif %}
+                <div class="col-sm-3 img1">
+                    <a href="/greenz/food/{{res.id}}">
+                        <img src="{{res.image}}" class="img-rectangle img-responsive">
+                    </a>
+                    <div class="intro">
+                      <p class="pro_name">{{res.name}}</p>
+                      <p class="price">{{res.cost|floatformat}}</p><p class="won">won</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
     </div>
 
 
-    <div class="col-sm-3 img1">
-    <a href="../templates/olive.html"><img src="../static/src/olive.jpg" class="img-rectangle img-responsive"></a>
-    <div class="pro1">
-      <a href="">
-        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-    </div>
-    <div class="intro">
-      <p class="pro_name">olive oil</p>
-      <p class="price">9,900</p><p class="won">won</p>
-    </div>
-    </div>
+<!--    <div class="col-sm-3 img1">-->
+<!--    <a href="../templates/olive.html"><img src="../static/src/olive.jpg" class="img-rectangle img-responsive"></a>-->
+<!--    <div class="pro1">-->
+<!--      <a href="">-->
+<!--        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--    </div>-->
+<!--    <div class="intro">-->
+<!--      <p class="pro_name">olive oil</p>-->
+<!--      <p class="price">9,900</p><p class="won">won</p>-->
+<!--    </div>-->
+<!--    </div>-->
 
-    <div class="col-sm-3 img1">
-    <a href="../templates/vinegar.html"><img src="../static/src/vinegar.jpg" class="img-rectangle img-responsive"></a>
-    <div class="pro1">
-      <a href="">
-        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-    </div>
-    <div class="intro">
-      <p class="pro_name">apple vinegar</p>
-      <p class="price">6,390</p><p class="won">won</p>
-    </div>
-    </div>
+<!--    <div class="col-sm-3 img1">-->
+<!--    <a href="../templates/vinegar.html"><img src="../static/src/vinegar.jpg" class="img-rectangle img-responsive"></a>-->
+<!--    <div class="pro1">-->
+<!--      <a href="">-->
+<!--        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--    </div>-->
+<!--    <div class="intro">-->
+<!--      <p class="pro_name">apple vinegar</p>-->
+<!--      <p class="price">6,390</p><p class="won">won</p>-->
+<!--    </div>-->
+<!--    </div>-->
 
-    <div class="col-sm-3 img1">
-    <a href="../templates/pepper.html"><img src="../static/src/pepper.jpg" class="img-rectangle img-responsive"></a>
-    <div class="pro1">
-      <a href="">
-        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-    </div>
-    <div class="intro">
-      <p class="pro_name">Pepper</p>
-      <p class="price">5,900</p><p class="won">won</p>
-    </div>
-    </div>
-  </div>
-</div>
+<!--    <div class="col-sm-3 img1">-->
+<!--    <a href="../templates/pepper.html"><img src="../static/src/pepper.jpg" class="img-rectangle img-responsive"></a>-->
+<!--    <div class="pro1">-->
+<!--      <a href="">-->
+<!--        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--    </div>-->
+<!--    <div class="intro">-->
+<!--      <p class="pro_name">Pepper</p>-->
+<!--      <p class="price">5,900</p><p class="won">won</p>-->
+<!--    </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
-  <div class="two_line">
-    <div class="row">
-        <div class="col-sm-3 img1">
-        <a href="../templates/ketchup.html"><img src="../static/src/ketchup.jpg" class="img-rectangle img-responsive"></a>
-        <div class="pro1">
-          <a href="">
-            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-        </div>
-        <div class="intro">
-          <p class="pro_name">Ketchup</p>
-          <p class="price">4660</p><p class="won">won</p>
-        </div>
-        </div>
+<!--  <div class="two_line">-->
+<!--    <div class="row">-->
+<!--        <div class="col-sm-3 img1">-->
+<!--        <a href="../templates/ketchup.html"><img src="../static/src/ketchup.jpg" class="img-rectangle img-responsive"></a>-->
+<!--        <div class="pro1">-->
+<!--          <a href="">-->
+<!--            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--        </div>-->
+<!--        <div class="intro">-->
+<!--          <p class="pro_name">Ketchup</p>-->
+<!--          <p class="price">4660</p><p class="won">won</p>-->
+<!--        </div>-->
+<!--        </div>-->
 
-        <div class="col-sm-3 img1">
-        <a href="../templates/sugar.html"><img src="../static/src/sugar.jpg" class="img-rectangle img-responsive"></a>
-        <div class="pro1">
-          <a href="">
-            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-        </div>
-        <div class="intro">
-          <p class="pro_name">Stevia</p>
-          <p class="price">3960</p><p class="won">won</p>
-        </div>
-        </div>
+<!--        <div class="col-sm-3 img1">-->
+<!--        <a href="../templates/sugar.html"><img src="../static/src/sugar.jpg" class="img-rectangle img-responsive"></a>-->
+<!--        <div class="pro1">-->
+<!--          <a href="">-->
+<!--            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--        </div>-->
+<!--        <div class="intro">-->
+<!--          <p class="pro_name">Stevia</p>-->
+<!--          <p class="price">3960</p><p class="won">won</p>-->
+<!--        </div>-->
+<!--        </div>-->
 
-        <div class="col-sm-3 img1">
-        <a href="../templates/gochu.html"><img src="../static/src/gochu.jpg" class="img-rectangle img-responsive"></a>
-        <div class="pro1">
-          <a href="">
-            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-        </div>
-        <div class="intro">
-          <p class="pro_name">red pepper paste</p>
-          <p class="price">7,650</p><p class="won">won</p>
-        </div>
-        </div>
+<!--        <div class="col-sm-3 img1">-->
+<!--        <a href="../templates/gochu.html"><img src="../static/src/gochu.jpg" class="img-rectangle img-responsive"></a>-->
+<!--        <div class="pro1">-->
+<!--          <a href="">-->
+<!--            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--        </div>-->
+<!--        <div class="intro">-->
+<!--          <p class="pro_name">red pepper paste</p>-->
+<!--          <p class="price">7,650</p><p class="won">won</p>-->
+<!--        </div>-->
+<!--        </div>-->
 
-        <div class="col-sm-3 img1">
-        <a href="../templates/chamgi.html"><img src="../static/src/chamgi.jpg" class="img-rectangle img-responsive"></a>
-        <div class="pro1">
-          <a href="">
-            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-        </div>
-        <div class="intro">
-          <p class="pro_name">Sesame oil</p>
-          <p class="price">25,800</p><p class="won">won</p>
-        </div>
-        </div>
-      </div>
-    </div>
+<!--        <div class="col-sm-3 img1">-->
+<!--        <a href="../templates/chamgi.html"><img src="../static/src/chamgi.jpg" class="img-rectangle img-responsive"></a>-->
+<!--        <div class="pro1">-->
+<!--          <a href="">-->
+<!--            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--        </div>-->
+<!--        <div class="intro">-->
+<!--          <p class="pro_name">Sesame oil</p>-->
+<!--          <p class="price">25,800</p><p class="won">won</p>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
-    <div class="two_line">
-      <div class="row">
-          <div class="col-sm-3 img1">
-          <a href="../templates/salt.html"><img src="../static/src/salt.jpg" class="img-rectangle img-responsive"></a>
-          <div class="pro1">
-            <a href="">
-              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-          </div>
-          <div class="intro">
-            <p class="pro_name">salt grinder</p>
-            <p class="price">5,394</p><p class="won">won</p>
-          </div>
-          </div>
+<!--    <div class="two_line">-->
+<!--      <div class="row">-->
+<!--          <div class="col-sm-3 img1">-->
+<!--          <a href="../templates/salt.html"><img src="../static/src/salt.jpg" class="img-rectangle img-responsive"></a>-->
+<!--          <div class="pro1">-->
+<!--            <a href="">-->
+<!--              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--          </div>-->
+<!--          <div class="intro">-->
+<!--            <p class="pro_name">salt grinder</p>-->
+<!--            <p class="price">5,394</p><p class="won">won</p>-->
+<!--          </div>-->
+<!--          </div>-->
 
-          <div class="col-sm-3 img1">
-          <a href="../templates/garoo.html"><img src="../static/src/garoo.jpg" class="img-rectangle img-responsive"></a>
-          <div class="pro1">
-            <a href="">
-              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-          </div>
-          <div class="intro">
-            <p class="pro_name">Red pepper powder</p>
-            <p class="price">7,760</p><p class="won">won</p>
-          </div>
-          </div>
+<!--          <div class="col-sm-3 img1">-->
+<!--          <a href="../templates/garoo.html"><img src="../static/src/garoo.jpg" class="img-rectangle img-responsive"></a>-->
+<!--          <div class="pro1">-->
+<!--            <a href="">-->
+<!--              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--          </div>-->
+<!--          <div class="intro">-->
+<!--            <p class="pro_name">Red pepper powder</p>-->
+<!--            <p class="price">7,760</p><p class="won">won</p>-->
+<!--          </div>-->
+<!--          </div>-->
 
-          <div class="col-sm-3 img1">
-          <a href="../templates/hot.html"><img src="../static/src/hot.jpg" class="img-rectangle img-responsive"></a>
-          <div class="pro1">
-            <a href="">
-              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-          </div>
-          <div class="intro">
-            <p class="pro_name">Hot sauce</p>
-            <p class="price">5,480</p><p class="won">won</p>
-          </div>
-          </div>
+<!--          <div class="col-sm-3 img1">-->
+<!--          <a href="../templates/hot.html"><img src="../static/src/hot.jpg" class="img-rectangle img-responsive"></a>-->
+<!--          <div class="pro1">-->
+<!--            <a href="">-->
+<!--              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--          </div>-->
+<!--          <div class="intro">-->
+<!--            <p class="pro_name">Hot sauce</p>-->
+<!--            <p class="price">5,480</p><p class="won">won</p>-->
+<!--          </div>-->
+<!--          </div>-->
 
-        </div>
-      </div>
-    </div>
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </div>
   <footer class="site-footer">

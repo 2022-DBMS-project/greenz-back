@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.exceptions import NotFound
@@ -31,15 +31,19 @@ def product(request):
 
 
 def source(request):
+    source = SourceList.objects.all()
+
     if request.COOKIES.get('id'):
-        return render(request, 'source.html', context={'text': 'Logout'})
+        text = 'Logout'
     else:
-        return render(request, 'source.html', context={'text': 'Login'})
+        text = 'Login'
+
+    return render(request, 'source.html', context={'text': text, 'source_list': source})
 
 
-def freshfood(request, product_id):
+def food(request, product_id):
     try:
-        product = FreshFoodList.objects.get(id=product_id)
+        product = Product.objects.get(id=product_id)
     except Product.DoesNotExist:
         product = None
 
@@ -56,10 +60,31 @@ def freshfood(request, product_id):
 
 # recipe list page
 def recipe(request):
+    recipe_num = RecipeList.objects.all()
+
+    recipe = []
+    for recipe_id in recipe_num:
+        recipe.append(Recipe.objects.get(id=recipe_id.id))
+
     if request.COOKIES.get('id'):
-        return render(request, 'Recipe_List.html', context={'text': 'Logout'})
+        text = 'Logout'
     else:
-        return render(request, 'Recipe_List.html', context={'text': 'Login'})
+        text = 'Login'
+
+    context = {
+        'text': text,
+        'recipe1': recipe[0],
+        'recipe2': recipe[1],
+        'recipe3': recipe[2],
+        'recipe4': recipe[3],
+        'recipe5': recipe[4]
+    }
+
+    return render(request, 'Recipe_List.html', context)
+
+
+def recipe_detail(request, recipe_id):
+    pass
 
 
 # restaurant list page
@@ -240,14 +265,12 @@ def join_view(request):
         # db에 저장
         user.save()
 
-        nowuser = User.objects.get(id=id)
-        # cart 생성
         cart = Cart()
-        cart.user_id = nowuser.uid
+        cart.user_id = user.uid
         cart.save()
 
-    return render(request, 'main.html')
-
+    messages.add_message(request, messages.INFO, '회원가입 되었습니다. 로그인해주세요.')
+    return render(request, 'main.html', context={'text': 'Login'})
 
 
 # login page
@@ -284,45 +307,89 @@ def login_view(request):
         messages.add_message(request, messages.WARNING, '비밀번호가 잘못되었습니다.')
         return render(request, 'login.html', context={'text': 'Login'})
 
-#
-# def _cart_id(request):
-#     cart = request.session.session_key
-#     if not cart:
-#         cart = request.session.create()
-#     return cart
 
-def add_cart(request, product_id):
-    product = Product.objects.get(id=product_id)
-    user = request.user.id
+def get_post(request):
+    global store
 
-    # 여기서 카트 uid 담아와서 카트 받아오는거 수정해야함...
-    cartall = Cart.objects.all()
-    cart = Cart.objects.get(user=user)
+    store_id = request.GET.get('id', None)
+    store = RMAP.objects.get(name=store_id)
 
+    return render(request, 'Restaurant2.html', context={'store': store})
+
+
+# cart page
+def cart(request, total=0, cart_items=None):
     try:
-        cart_item = CartItem.objects.get(product=product, cart=cart)
-        cart_item.quantity += 1
-        cart_item.save()
-    except CartItem.DoesNotExist:
-        cart_item = CartItem.objects.create(
-            product=product,
-            quantity=1,
-            cart=cart
-        )
-        cart_item.save()
-    return redirect('cart:cart_detail')
+        user = User.objects.get(id=request.COOKIES.get('id'))
+        cart = Cart.objects.get(user_id=user.uid)
 
-def cart_detail(request, total=2000, counter=0, cart_items=None):
-    try:
-        cart = Cart.objects.get(user=request.user.id)
-        cart_items = CartItem.objects.filter(cart=cart, active=True)
+        cart_items = CartItem.objects.filter(cart=cart.id)
+
         for cart_item in cart_items:
-            total += (cart_item.product.cost * cart_item.quantity)
-            counter += cart_item.quantity
+            product = Product.objects.get(id=cart_item.product.id)
+            total += (product.cost * cart_item.quantity)
     except ObjectDoesNotExist:
         pass
 
-    return render(request, 'cart.html', dict(cart_items=cart_items, total=total, counter=counter))
+    if request.COOKIES.get('id'):
+        text = 'Logout'
+    else:
+        text = 'Login'
+
+    context = {
+        'cart_id': cart.id,
+        'cart_items': cart_items,
+        'noship_total': total,
+        'ship_total': total + 2000,
+        'text': text
+    }
+
+    return render(request, 'cart.html', context)
+
+
+def add_cart(request, product_id):
+    if request.COOKIES.get('id'):
+        user = User.objects.get(id=request.COOKIES.get('id'))
+        cart = Cart.objects.get(user_id=user.uid)
+
+        try:
+            cart_item = CartItem.objects.filter(cart_id=cart.id)
+        except CartItem.DoesNotExist:
+            cart_item = None
+
+        if cart_item is None:
+            item = CartItem()
+            item.quantity = 1
+            item.cart_id = cart.id
+            item.product_id = product_id
+            item.save()
+
+        else:
+            for item in cart_item:
+                if item.product_id == product_id:
+                    item.quantity += 1
+                    item.save()
+                    return redirect('cart:cart')
+
+            item = CartItem()
+            item.quantity = 1
+            item.cart_id = cart.id
+            item.product_id = product_id
+            item.save()
+
+        return redirect('cart:cart')
+    else:
+        messages.add_message(request, messages.ERROR, '권한이 없습니다. 로그인해주세요.')
+        return render(request, 'login.html', context={'text': 'Login'})
+
+
+def order(request, cart_id):
+    if request.COOKIES.get('id'):
+        text = 'Logout'
+    else:
+        text = 'Login'
+    return render(request, 'buy.html', context={'text': text})
+
 
 #edit
 def edit(request):
