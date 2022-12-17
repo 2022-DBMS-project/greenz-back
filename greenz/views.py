@@ -2,12 +2,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.exceptions import NotFound
 from django.db import connection
 from django.contrib import messages
-from greenz.models import User
-from .models import RMAP
-from django.views import View
+from greenz.models import *
 
 
 # main page
@@ -20,10 +18,38 @@ def main(request):
 
 # product list page(디폴트는 fresh food 리스트를 보여주는 페이지)
 def product(request):
+    product = FreshFoodList.objects.all()
+
     if request.COOKIES.get('id'):
-        return render(request, 'freshfood.html', context={'text': 'Logout'})
+        text = 'Logout'
     else:
-        return render(request, 'freshfood.html', context={'text': 'Login'})
+        text = 'Login'
+
+    return render(request, 'freshfood.html', context={'text': text, 'food_list': product})
+
+
+def source(request):
+    if request.COOKIES.get('id'):
+        return render(request, 'source.html', context={'text': 'Logout'})
+    else:
+        return render(request, 'source.html', context={'text': 'Login'})
+
+
+def freshfood(request, product_id):
+    try:
+        product = FreshFoodList.objects.get(id=product_id)
+    except Product.DoesNotExist:
+        product = None
+
+    if product is None:
+        raise NotFound("페이지를 찾을 수 없습니다.")
+
+    if request.COOKIES.get('id'):
+        text = 'Logout'
+    else:
+        text = 'Login'
+
+    return render(request, 'product.html', context={'text': text, 'fresh_food': product})
 
 
 # recipe list page

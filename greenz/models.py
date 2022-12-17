@@ -163,3 +163,38 @@ class RMAP(models.Model):
     class Meta:
         managed = False
         db_table = 'r_map'
+
+class FreshFoodList(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=45, blank=True, null=True)
+    cost = models.FloatField(blank=True, null=True)
+    unit = models.IntegerField(blank=True, null=True)
+    weight = models.CharField(max_length=45, blank=True, null=True)
+    origin = models.CharField(max_length=135, blank=True, null=True)
+    expirationdate = models.CharField(db_column='expirationDate', max_length=135, blank=True, null=True)
+    image = models.CharField(max_length=255, blank=True, null=True)
+    keyword = models.CharField(max_length=135, blank=True, null=True)
+    type = models.CharField(max_length=45, blank=True, null=True)
+    package = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'fresh_food_list'
+
+
+class SourceList(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=45, blank=True, null=True)
+    cost = models.FloatField(blank=True, null=True)
+    unit = models.IntegerField(blank=True, null=True)
+    weight = models.CharField(max_length=45, blank=True, null=True)
+    origin = models.CharField(max_length=135, blank=True, null=True)
+    expirationdate = models.CharField(db_column='expirationDate', max_length=135, blank=True, null=True)
+    image = models.CharField(max_length=255, blank=True, null=True)
+    keyword = models.CharField(max_length=135, blank=True, null=True)
+    type = models.CharField(max_length=45, blank=True, null=True)
+    package = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'source_list'

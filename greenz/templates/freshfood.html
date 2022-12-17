@@ -82,217 +82,240 @@
       <li data-toggle="collpase" data-target="#food">ALL PRODUCTS</li>
       <hr>
       <li><a href="/greenz/product/">FRESH FOOD</a></li>
-      <li><a href="../templates/source.html">SOURCE</a></li>
+      <li><a href="/grrenz/source/">SOURCE</a></li>
     </ul>
     </div>
 <div class="col-sm-9">
-  <div id="one_line">
-    <h3 id="all">FRESH FOOD</h3>
-    <div class="row">
-    <div class="col-sm-3 img1">
-    <a href="../templates/carrot.html"><img src="/static/src/carrot.jpg" class="img-rectangle img-responsive"></a>
-    <div class="intro">
-      <p class="pro_name">eco-friendly carrots</p>
-      <p class="price">2,290</p><p class="won">won</p>
-    </div>
-    </div>
 
+    <div id="one_line">
+        <h3 id="all">FRESH FOOD</h3>
 
-    <div class="col-sm-3 img1">
-    <a href="../templates/apple.html"><img src="/static/src/apple.jpg" class="img-rectangle img-responsive"></a>
-    <div class="pro1">
-      <a href="">
-        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-    </div>
-    <div class="intro">
-      <p class="pro_name">washed apple 800g(4 pieces)</p>
-      <p class="price">6,100</p><p class="won">won</p>
-    </div>
-    </div>
-
-    <div class="col-sm-3 img1">
-    <a href="../templates/spinach.html"><img src="/static/src/spinach.jpg" class="img-rectangle img-responsive"></a>
-    <div class="pro1">
-      <a href="">
-        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-    </div>
-    <div class="intro">
-      <p class="pro_name">Baby spinach</p>
-      <p class="price">2,800</p><p class="won">won</p>
-    </div>
-    </div>
-
-    <div class="col-sm-3 img1">
-    <a href="../templates/paprika.html"><img src="/static/src/paprika.jpg" class="img-rectangle img-responsive"></a>
-    <div class="pro1">
-      <a href="">
-        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-    </div>
-    <div class="intro">
-      <p class="pro_name">One bite of paprika</p>
-      <p class="price">1,490</p><p class="won">won</p>
-    </div>
-    </div>
-
-    </div>
-    </div>
-
-    <div class="two_line">
-      <div class="row">
-        <div class="col-sm-3 img1">
-        <a href="../templates/onion.html"><img src="/static/src/onion.jpg" class="img-rectangle img-responsive"></a>
-        <div class="pro1">
-          <a href="">
-            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-        </div>
-        <div class="intro">
-          <p class="pro_name">eco-friendly onion</p>
-          <p class="price">1,790</p><p class="won">won</p>
-        </div>
-        </div>
-
-        <div class="col-sm-3 img1">
-        <a href="../templates/broccoli.html"><img src="/static/src/broccoli.jpg" class="img-rectangle img-responsive"></a>
-        <div class="pro1">
-          <a href="">
-            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-        </div>
-        <div class="intro">
-          <p class="pro_name">broccoli</p>
-          <p class="price">2,990</p><p class="won">won</p>
-        </div>
-        </div>
-
-        <div class="col-sm-3 img1">
-        <a href="../templates/avocado.html"><img src="/static/src/avocado.jpg" class="img-rectangle img-responsive"></a>
-        <div class="pro1">
-          <a href="">
-            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-        </div>
-        <div class="intro">
-          <p class="pro_name">avocado</p>
-          <p class="price">2,682</p><p class="won">won</p>
-        </div>
-        </div>
-
-        <div class="col-sm-3 img1">
-        <a href="../templates/tomato.html"><img src="/static/src/tomato.jpg" class="img-rectangle img-responsive"></a>
-        <div class="pro1">
-          <a href="">
-            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-        </div>
-        <div class="intro">
-          <p class="pro_name">tomatoes</p>
-          <p class="price">2,390</p><p class="won">won</p>
-        </div>
-        </div>
-      </div>
-      </div>
-
-      <div class="two_line">
         <div class="row">
-          <div class="col-sm-3 img1">
-          <a href="../templates/cabbage.html"><img src="/static/src/cabbage.jpg" class="img-rectangle img-responsive"></a>
-          <div class="pro1">
-            <a href="">
-              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-          </div>
-          <div class="intro">
-            <p class="pro_name">shredded cabbage</p>
-            <p class="price">1,990</p><p class="won">won</p>
-          </div>
-          </div>
+            {% for res in food_list %}
+                {% if forloop.counter == 5 || forloop.counter == 10 || forloop.counter == 15 || forloop.counter == 20 %}
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                {% endif %}
+                <div class="col-sm-3 img1">
+                    <a href="/greenz/freshfood/{{res.id}}">
+                        <img src="{{res.image}}" class="img-rectangle img-responsive">
+                    </a>
+                    <div class="intro">
+                      <p class="pro_name">{{res.name}}</p>
+                      <p class="price">{{res.cost|floatformat}}</p><p class="won">won</p>
+                    </div>
+                </div>
+            {% endfor %}
 
-          <div class="col-sm-3 img1">
-          <a href="../templates/mush.html"><img src="/static/src/mush.jpg" class="img-rectangle img-responsive"></a>
-          <div class="pro1">
-            <a href="">
-              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-          </div>
-          <div class="intro">
-            <p class="pro_name">mushrooms</p>
-            <p class="price">5,190</p><p class="won">won</p>
-          </div>
-          </div>
-
-          <div class="col-sm-3 img1">
-          <a href="../templates/garlic.html"><img src="/static/src/garlic.jpg" class="img-rectangle img-responsive"></a>
-          <div class="pro1">
-            <a href="">
-              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-          </div>
-          <div class="intro">
-            <p class="pro_name">Organic peeled garlic</p>
-            <p class="price">5,990</p><p class="won">won</p>
-          </div>
-          </div>
-
-          <div class="col-sm-3 img1">
-          <a href="../templates/cucumber.html"><img src="/static/src/cucumber.jpg" class="img-rectangle img-responsive"></a>
-          <div class="pro1">
-            <a href="">
-              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-          </div>
-          <div class="intro">
-            <p class="pro_name">GAP cucumber</p>
-            <p class="price">1,800</p><p class="won">won</p>
-          </div>
-          </div>
         </div>
-        </div>
+    </div>
 
-        <div class="two_line">
-          <div class="row">
-            <div class="col-sm-3 img1">
-            <a href="../templates/kong.html"><img src="/static/src/kong.jpg" class="img-rectangle img-responsive"></a>
-            <div class="pro1">
-              <a href="">
-                <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-            </div>
-            <div class="intro">
-              <p class="pro_name">frozen peas</p>
-              <p class="price">3,290</p><p class="won">won</p>
-            </div>
-            </div>
 
-            <div class="col-sm-3 img1">
-            <a href="../templates/dubu.html"><img src="/static/src/dubu.jpg" class="img-rectangle img-responsive"></a>
-            <div class="pro1">
-              <a href="">
-                <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-            </div>
-            <div class="intro">
-              <p class="pro_name">native bean tofu</p>
-              <p class="price">3,000</p><p class="won">won</p>
-            </div>
-            </div>
+<!--    <div class="col-sm-3 img1">-->
+<!--    <a href="/greenz/freshfood/"><img src="/static/src/carrot.jpg" class="img-rectangle img-responsive"></a>-->
+<!--    <div class="intro">-->
+<!--      <p class="pro_name">eco-friendly carrots</p>-->
+<!--      <p class="price">2,290</p><p class="won">won</p>-->
+<!--    </div>-->
+<!--    </div>-->
 
-            <div class="col-sm-3 img1">
-            <a href="../templates/kimchi.html"><img src="/static/src/kimchi.jpg" class="img-rectangle img-responsive"></a>
-            <div class="pro1">
-              <a href="">
-                <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-            </div>
-            <div class="intro">
-              <p class="pro_name">cabbage kimchi</p>
-              <p class="price">10,800</p><p class="won">won</p>
-            </div>
-            </div>
+<!--    <div class="col-sm-3 img1">-->
+<!--    <a href="../templates/apple.html"><img src="/static/src/apple.jpg" class="img-rectangle img-responsive"></a>-->
+<!--    <div class="pro1">-->
+<!--      <a href="">-->
+<!--        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--    </div>-->
+<!--    <div class="intro">-->
+<!--      <p class="pro_name">washed apple 800g(4 pieces)</p>-->
+<!--      <p class="price">6,100</p><p class="won">won</p>-->
+<!--    </div>-->
+<!--    </div>-->
 
-            <div class="col-sm-3 img1">
-            <a href="../templates/egg.html"><img src="/static/src/egg.jpg" class="img-rectangle img-responsive"></a>
-            <div class="pro1">
-              <a href="">
-                <span class="glyphicon glyphicon-shopping-cart cart"></span></a>
-            </div>
-            <div class="intro">
-              <p class="pro_name">Animal welfare eggs</p>
-              <p class="price">7,500</p><p class="won">won</p>
-            </div>
-            </div>
-          </div>
-          </div>
-        </div>
+<!--    <div class="col-sm-3 img1">-->
+<!--    <a href="../templates/spinach.html"><img src="/static/src/spinach.jpg" class="img-rectangle img-responsive"></a>-->
+<!--    <div class="pro1">-->
+<!--      <a href="">-->
+<!--        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--    </div>-->
+<!--    <div class="intro">-->
+<!--      <p class="pro_name">Baby spinach</p>-->
+<!--      <p class="price">2,800</p><p class="won">won</p>-->
+<!--    </div>-->
+<!--    </div>-->
+
+<!--    <div class="col-sm-3 img1">-->
+<!--    <a href="../templates/paprika.html"><img src="/static/src/paprika.jpg" class="img-rectangle img-responsive"></a>-->
+<!--    <div class="pro1">-->
+<!--      <a href="">-->
+<!--        <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--    </div>-->
+<!--    <div class="intro">-->
+<!--      <p class="pro_name">One bite of paprika</p>-->
+<!--      <p class="price">1,490</p><p class="won">won</p>-->
+<!--    </div>-->
+<!--    </div>-->
+
+<!--    </div>-->
+<!--    </div>-->
+
+<!--    <div class="two_line">-->
+<!--      <div class="row">-->
+<!--        <div class="col-sm-3 img1">-->
+<!--        <a href="../templates/onion.html"><img src="/static/src/onion.jpg" class="img-rectangle img-responsive"></a>-->
+<!--        <div class="pro1">-->
+<!--          <a href="">-->
+<!--            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--        </div>-->
+<!--        <div class="intro">-->
+<!--          <p class="pro_name">eco-friendly onion</p>-->
+<!--          <p class="price">1,790</p><p class="won">won</p>-->
+<!--        </div>-->
+<!--        </div>-->
+
+<!--        <div class="col-sm-3 img1">-->
+<!--        <a href="../templates/broccoli.html"><img src="/static/src/broccoli.jpg" class="img-rectangle img-responsive"></a>-->
+<!--        <div class="pro1">-->
+<!--          <a href="">-->
+<!--            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--        </div>-->
+<!--        <div class="intro">-->
+<!--          <p class="pro_name">broccoli</p>-->
+<!--          <p class="price">2,990</p><p class="won">won</p>-->
+<!--        </div>-->
+<!--        </div>-->
+
+<!--        <div class="col-sm-3 img1">-->
+<!--        <a href="../templates/avocado.html"><img src="/static/src/avocado.jpg" class="img-rectangle img-responsive"></a>-->
+<!--        <div class="pro1">-->
+<!--          <a href="">-->
+<!--            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--        </div>-->
+<!--        <div class="intro">-->
+<!--          <p class="pro_name">avocado</p>-->
+<!--          <p class="price">2,682</p><p class="won">won</p>-->
+<!--        </div>-->
+<!--        </div>-->
+
+<!--        <div class="col-sm-3 img1">-->
+<!--        <a href="../templates/tomato.html"><img src="/static/src/tomato.jpg" class="img-rectangle img-responsive"></a>-->
+<!--        <div class="pro1">-->
+<!--          <a href="">-->
+<!--            <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--        </div>-->
+<!--        <div class="intro">-->
+<!--          <p class="pro_name">tomatoes</p>-->
+<!--          <p class="price">2,390</p><p class="won">won</p>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      </div>-->
+
+<!--      <div class="two_line">-->
+<!--        <div class="row">-->
+<!--          <div class="col-sm-3 img1">-->
+<!--          <a href="../templates/cabbage.html"><img src="/static/src/cabbage.jpg" class="img-rectangle img-responsive"></a>-->
+<!--          <div class="pro1">-->
+<!--            <a href="">-->
+<!--              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--          </div>-->
+<!--          <div class="intro">-->
+<!--            <p class="pro_name">shredded cabbage</p>-->
+<!--            <p class="price">1,990</p><p class="won">won</p>-->
+<!--          </div>-->
+<!--          </div>-->
+
+<!--          <div class="col-sm-3 img1">-->
+<!--          <a href="../templates/mush.html"><img src="/static/src/mush.jpg" class="img-rectangle img-responsive"></a>-->
+<!--          <div class="pro1">-->
+<!--            <a href="">-->
+<!--              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--          </div>-->
+<!--          <div class="intro">-->
+<!--            <p class="pro_name">mushrooms</p>-->
+<!--            <p class="price">5,190</p><p class="won">won</p>-->
+<!--          </div>-->
+<!--          </div>-->
+
+<!--          <div class="col-sm-3 img1">-->
+<!--          <a href="../templates/garlic.html"><img src="/static/src/garlic.jpg" class="img-rectangle img-responsive"></a>-->
+<!--          <div class="pro1">-->
+<!--            <a href="">-->
+<!--              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--          </div>-->
+<!--          <div class="intro">-->
+<!--            <p class="pro_name">Organic peeled garlic</p>-->
+<!--            <p class="price">5,990</p><p class="won">won</p>-->
+<!--          </div>-->
+<!--          </div>-->
+
+<!--          <div class="col-sm-3 img1">-->
+<!--          <a href="../templates/cucumber.html"><img src="/static/src/cucumber.jpg" class="img-rectangle img-responsive"></a>-->
+<!--          <div class="pro1">-->
+<!--            <a href="">-->
+<!--              <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--          </div>-->
+<!--          <div class="intro">-->
+<!--            <p class="pro_name">GAP cucumber</p>-->
+<!--            <p class="price">1,800</p><p class="won">won</p>-->
+<!--          </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        </div>-->
+
+<!--        <div class="two_line">-->
+<!--          <div class="row">-->
+<!--            <div class="col-sm-3 img1">-->
+<!--            <a href="../templates/kong.html"><img src="/static/src/kong.jpg" class="img-rectangle img-responsive"></a>-->
+<!--            <div class="pro1">-->
+<!--              <a href="">-->
+<!--                <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--            </div>-->
+<!--            <div class="intro">-->
+<!--              <p class="pro_name">frozen peas</p>-->
+<!--              <p class="price">3,290</p><p class="won">won</p>-->
+<!--            </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-sm-3 img1">-->
+<!--            <a href="../templates/dubu.html"><img src="/static/src/dubu.jpg" class="img-rectangle img-responsive"></a>-->
+<!--            <div class="pro1">-->
+<!--              <a href="">-->
+<!--                <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--            </div>-->
+<!--            <div class="intro">-->
+<!--              <p class="pro_name">native bean tofu</p>-->
+<!--              <p class="price">3,000</p><p class="won">won</p>-->
+<!--            </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-sm-3 img1">-->
+<!--            <a href="../templates/kimchi.html"><img src="/static/src/kimchi.jpg" class="img-rectangle img-responsive"></a>-->
+<!--            <div class="pro1">-->
+<!--              <a href="">-->
+<!--                <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--            </div>-->
+<!--            <div class="intro">-->
+<!--              <p class="pro_name">cabbage kimchi</p>-->
+<!--              <p class="price">10,800</p><p class="won">won</p>-->
+<!--            </div>-->
+<!--            </div>-->
+
+<!--            <div class="col-sm-3 img1">-->
+<!--            <a href="../templates/egg.html"><img src="/static/src/egg.jpg" class="img-rectangle img-responsive"></a>-->
+<!--            <div class="pro1">-->
+<!--              <a href="">-->
+<!--                <span class="glyphicon glyphicon-shopping-cart cart"></span></a>-->
+<!--            </div>-->
+<!--            <div class="intro">-->
+<!--              <p class="pro_name">Animal welfare eggs</p>-->
+<!--              <p class="price">7,500</p><p class="won">won</p>-->
+<!--            </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+    </div>
 </div>
 </div>
 <footer class="site-footer">
