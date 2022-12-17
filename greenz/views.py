@@ -84,7 +84,32 @@ def recipe(request):
 
 
 def recipe_detail(request, recipe_id):
-    pass
+    recipe = Recipe.objects.get(id=recipe_id)
+
+    ingre=RecipeIngredient.objects.filter(recipe_id=recipe_id)
+    m=recipe.method
+    mm=m.split('\n')
+    method=[]
+    for i in mm:
+        li='m'+list(i)[0]
+        row={
+            'id':li,
+            'method':i
+        }
+        method.append(row)
+    ing=[]
+    if request.COOKIES.get('id'):
+        text = 'Logout'
+    else:
+        text = 'Login'
+    context = {
+        'text': text,
+        'recipe': recipe,
+        'ingre':ingre,
+        'method':method
+    }
+
+    return render(request, 'Recipe1.html', context)
 
 
 # restaurant list page
