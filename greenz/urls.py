@@ -3,6 +3,8 @@ from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
+app_name = "cart"
+
 urlpatterns = [
     path('', views.main, name='index'),
     path('product/', views.product, name='food_list'),

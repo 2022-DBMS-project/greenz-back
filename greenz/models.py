@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Cart(models.Model):
-    id = models.IntegerField(primary_key=True)
-    user = models.ForeignKey('User', models.DO_NOTHING)
+    id = models.AutoField(primary_key=True)
+    user_id = models.ForeignKey('User', models.DO_NOTHING)
 
     class Meta:
         managed = False

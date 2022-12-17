@@ -97,7 +97,7 @@
       </div>
       <div class="bc">
         <input type="submit" id="co" class="btn btn-default cart" onclick="Carting();" value="shopping cart">
-        <input type="submit" id="co1" class="btn btn-default buy" onClick="location.href='../templates/cart.html'" value="go shopping cart">
+        <input type="submit" id="co1" class="btn btn-default buy" onClick="location.href='{% url 'cart:add_cart' fresh_food.id %}'" value="go shopping cart">
     </div>
     </div>
 
