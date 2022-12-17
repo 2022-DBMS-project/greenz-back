@@ -9,6 +9,9 @@ class Cart(models.Model):
         managed = False
         db_table = 'cart'
 
+    def __str__(self):
+        return self.id
+
 
 class CartItem(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -19,6 +22,12 @@ class CartItem(models.Model):
     class Meta:
         managed = False
         db_table = 'cart_item'
+
+    def sub_total(self):
+        return self.product.cost * self.quantity
+
+    def __str__(self):
+        return self.product
 
 
 class Category(models.Model):

@@ -1,4 +1,4 @@
-
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
@@ -6,6 +6,11 @@ from rest_framework.exceptions import NotFound
 from django.db import connection
 from django.contrib import messages
 from greenz.models import *
+
+
+# from .models import RMAP, CartItem, Cart, Orders, Product
+from django.views import View
+
 
 
 # main page
@@ -154,4 +159,47 @@ def get_post(request):
     store = RMAP.objects.get(name=store_id)
 
     return render(request, 'Restaurant2.html', context={'store': store})
+
+
+def _cart_id(request):
+    cart = request.session.session_key
+    if not cart:
+        cart = request.session.create()
+    return  cart
+
+def add_cart(request, product_id):
+    product = Product.objects.get(id=product_id)
+    try:
+        cart = Cart.objects.get(cart_id= _cart_id(request))
+    except Cart.DoesNotExist:
+        cart = Cart.objects.create(
+            cart_id = _cart_id(request)
+        )
+        cart.save()
+
+
+    try:
+        cart_item = CartItem.objects.get(product=product, cart=cart)
+        cart_item.quantity += 1
+        cart_item.save()
+    except CartItem.DoesNotExist:
+        cart_item = CartItem.objects.create(
+            product = product,
+            quantity = 1,
+            cart = cart
+        )
+        cart_item.save()
+    return redirect('cart:cart_detail')
+
+def cart_detail(request, total=2000, counter=0, cart_items=None):
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart, active=True)
+        for cart_item in cart_items:
+            total += (cart_item.product.cost * cart_item.quantity)
+            counter += cart_item.quantity
+    except ObjectDoesNotExist:
+        pass
+
+    return render(request, 'cart.html', dict(cart_items = cart_items, total = total, counter = counter))
 
