@@ -19,7 +19,8 @@ urlpatterns = [
     path('join_view', views.join_view, name='join'),
     path('login_view', views.login_view, name='login'),
     path('add/<int:product_id>/', views.add_cart, name='add_cart'),
-    path('', views.cart_detail, name='cart_detail')
+    path('', views.cart_detail, name='cart_detail'),
+    path('edit/', views.edit, name='edit'),
 
 ]
 

@@ -112,10 +112,9 @@
 						<div class="body">
 							<div class="user_image col-lg-4">
 								<img src="/static/src/person.png" class="img-circle member" width="150px" height="150px">
-								<h2 class="text1">:
+								<h2 class="text1">
 <!--									{{user.0.0}}-->
 									{{user.0.1}}
-
 								</h2>
 							</div>
 							<div class="col-lg-8">
@@ -145,7 +144,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div id="order_list">
 					<div class="info">
 						<div class="title">
@@ -219,25 +218,26 @@
 								<div class="element dlist4">수정</div>
 							</div>
 							<ul class="deliver_detail">
-								<form>
+								<form action="/greenz/edit/" method="post">
+									{% csrf_token %}
 									<li class="order_detail_list">
 										<div>
 											<div class="address_text">
-												<div>
-												{{user.0.4}}
-												</div>
+                                              <input style="border:none;" type="text" name="addr" placeholder="{{user.0.4}}"></input>
 											</div>
-											<div class="name_text">{{user.0.2}}</div>
-											<div class="phoneNumber">{{user.0.5}}</div>
+											<div class="name_text">
+												<input style="width:80px; border:none;" type="text" name="name" placeholder="{{user.0.2}}"></input>
+											</div>
+											<div class="phoneNumber"><input style="width:120px; border:none;" type="text" name="phone" placeholder="{{user.0.5}}"></input></div>
 											<div class="revise_btn">
-												<a href="/greenz/edit">
+												<button type="submit">
 													<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 														<g fill="none" fill-rule="evenodd">
 															<path fill="none" d="M0 0h24v24H0z"></path>
 															<path d="m13.83 5.777 4.393 4.393-10.58 10.58H3.25v-4.394l10.58-10.58zm3.204-2.527c.418 0 .837.16 1.157.48l2.08 2.08a1.63 1.63 0 0 1 0 2.314l-2.157 2.156-4.394-4.394 2.157-2.156c.32-.32.738-.48 1.157-.48z" stroke="#ccc" stroke-width="1.5"></path>
 														</g>
 													</svg>
-												</a>
+												</button>
 											</div>
 										</div>
 									</li>
@@ -250,7 +250,7 @@
 		</div>
 	</section>
 
-	
+
 
     <!-- footer -->
     <footer class="site-footer">

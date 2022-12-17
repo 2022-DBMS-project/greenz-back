@@ -89,10 +89,133 @@ def cart(request):
 
 def mypage(request):
     if request.COOKIES.get('id'):
-        return render(request, 'mypage.html', context={'text': 'Logout'})
+        # return render(request, 'mypage.html', context={'text': 'Logout'})
+        # if request.method == "GET":
+            global datas
+            try:
+                userid = request.COOKIES.get('id')
+                # userid = "user1"
+                pk = User.objects.get(id=userid).uid
+                cursor = connection.cursor()
+                strSql = "SELECT uid,id, name, email, address,phone_number FROM user where uid=%d" % pk
+                result = cursor.execute(strSql)
+                user = cursor.fetchall()
+                connection.commit()
+                connection.close()
+
+                # 사용자의 주문 번호에 따른 정보들
+                cursor = connection.cursor()
+                strSql = " CREATE OR REPLACE VIEW orderbill AS SELECT user_id, id from orders where user_id=%d order by created_date" % pk
+                result = cursor.execute(strSql)
+                connection.commit()
+                connection.close()
+
+                cursor = connection.cursor()
+                strSql = "select * from orderbill"
+                result = cursor.execute(strSql)
+                orderbill = cursor.fetchall()
+                connection.commit()
+                connection.close()
+
+                cursor = connection.cursor()
+                # strSql = "CREATE OR REPLACE VIEW orderitems AS SELECT o.user_id,oi.cart_item_id, oi.order_id,p.name, p.cost, ci.quantity, o.created_date,status s from cart_item ci, product p, order_item oi,orders o, status s where o.user_id=%d and oi.cart_item_id=ci.id and ci.product_id=p.id and o.id=oi.order_id and o.status_id=s.id"%pk
+                strSql = "CREATE OR REPLACE VIEW orderitems AS SELECT o.user_id, oi.order_id,p.name, p.cost, ci.quantity, o.created_date,s.status,p.image from cart_item ci, product p, order_item oi,orders o,status s where o.user_id=%d and oi.cart_item_id=ci.id and ci.product_id=p.id and o.id=oi.order_id and o.status_id=s.id" % pk
+                result = cursor.execute(strSql)
+                connection.commit()
+                connection.close()
+
+                cursor = connection.cursor()
+                strSql = "CREATE OR REPLACE VIEW toi AS select order_id,created_date, ANY_VALUE(name) AS pname,status from orderitems group by order_id order by created_date"
+                result = cursor.execute(strSql)
+                strSql = "select * from toi"
+                result = cursor.execute(strSql)
+                orderitems = cursor.fetchall()
+                connection.commit()
+                connection.close()
+
+                # 총가격
+                orders = []
+                cursor = connection.cursor()
+                for ob in orderbill:
+                    strSql = "select order_id,sum(cost*quantity) as Price from orderitems where order_id=%d" % ob[1]
+                    result = cursor.execute(strSql)
+                    temp = cursor.fetchall()
+                    orders.append(temp[0][1])
+                    # temp+=temp
+                connection.commit()
+                connection.close()
+
+                # 건수
+                orderpnum = []
+                cursor = connection.cursor()
+                for ob in orderbill:
+                    strSql = "select count(name)-1 as casenum  from orderitems where order_id=%d" % ob[1]
+                    result = cursor.execute(strSql)
+                    temp = cursor.fetchall()
+                    orderpnum.append(temp[0])
+                    # temp+=temp
+                connection.commit()
+                connection.close()
+
+                # 상세 내역 보기
+                orderdetail = []
+                cursor = connection.cursor()
+                for ob in orderbill:
+                    strSql = "select name,cost*quantity as price from orderitems where order_id=%d" % ob[1]
+                    result = cursor.execute(strSql)
+                    temp = cursor.fetchall()
+                    orderdetail.append(temp)
+                    # temp+=temp
+                connection.commit()
+                connection.close()
+
+                # 이미지
+                img = []
+                cursor = connection.cursor()
+                for ob in orderbill:
+                    strSql = "select image from orderitems where order_id=%d" % ob[1]
+                    result = cursor.execute(strSql)
+                    temp = cursor.fetchall()
+                    img.append(temp[0])
+                    # temp+=temp
+                connection.commit()
+                connection.close()
+
+                forder = []
+                i = 0
+                for data in orderitems:
+                    row = [
+                        data[1],  # 날짜
+                        data[2],  # 상품명
+                        data[0],  # 주문번호
+                        orders[i],  # 결제 금액
+                        data[3],  # 배송상태
+                        orderpnum[i],  # 건수
+                        orderdetail[i],
+                        img[i],
+                    ]
+                    i = i + 1
+                    forder.append(row)
+
+
+
+            except:
+                connection.rollback()
+                print("Failed selecting in mypageview")
+
+            context = {'user': user,
+                       'forder': forder,
+                       'text': 'Logout'
+                       }
+            # return HttpResponse(orderlist)
+            # return render(request, 'mypage.html', context={'user':user})
+            # return render(request, 'mypage.html', context={'orderlist':orderlist})
+            return render(request, 'mypage.html', context)
     else:
         messages.add_message(request, messages.ERROR, '권한이 없습니다. 로그인해주세요.')
         return render(request, 'login.html', context={'text': 'Login'})
+
+
 
 
 @csrf_exempt
@@ -201,3 +324,137 @@ def cart_detail(request, total=2000, counter=0, cart_items=None):
 
     return render(request, 'cart.html', dict(cart_items=cart_items, total=total, counter=counter))
 
+#edit
+def edit(request):
+    global usr
+    if request.method == "POST":
+        addr=request.POST['addr']
+        name=request.POST['name']
+        phone=request.POST['phone']
+        userid = request.COOKIES.get('id')
+        usera=User.objects.get(id=userid)
+        usera.name=name
+        usera.address=addr
+        usera.phone_number=phone
+        usera.save()
+        return redirect('/greenz/mypage')
+    elif request.method == "GET":
+        global datas
+        try:
+            userid=request.COOKIES.get('id')
+            # userid = "user1"
+            pk = User.objects.get(id=userid).uid
+            cursor = connection.cursor()
+            strSql = "SELECT uid,id, name, email, address,phone_number FROM user where uid=%d" % pk
+            result = cursor.execute(strSql)
+            user = cursor.fetchall()
+            connection.commit()
+            connection.close()
+
+            # 사용자의 주문 번호에 따른 정보들
+            cursor = connection.cursor()
+            strSql = " CREATE OR REPLACE VIEW orderbill AS SELECT user_id, id from orders where user_id=%d order by created_date" % pk
+            result = cursor.execute(strSql)
+            connection.commit()
+            connection.close()
+
+            cursor = connection.cursor()
+            strSql = "select * from orderbill"
+            result = cursor.execute(strSql)
+            orderbill = cursor.fetchall()
+            connection.commit()
+            connection.close()
+
+            cursor = connection.cursor()
+            # strSql = "CREATE OR REPLACE VIEW orderitems AS SELECT o.user_id,oi.cart_item_id, oi.order_id,p.name, p.cost, ci.quantity, o.created_date,status s from cart_item ci, product p, order_item oi,orders o, status s where o.user_id=%d and oi.cart_item_id=ci.id and ci.product_id=p.id and o.id=oi.order_id and o.status_id=s.id"%pk
+            strSql = "CREATE OR REPLACE VIEW orderitems AS SELECT o.user_id, oi.order_id,p.name, p.cost, ci.quantity, o.created_date,s.status,p.image from cart_item ci, product p, order_item oi,orders o,status s where o.user_id=%d and oi.cart_item_id=ci.id and ci.product_id=p.id and o.id=oi.order_id and o.status_id=s.id" % pk
+            result = cursor.execute(strSql)
+            connection.commit()
+            connection.close()
+
+            cursor = connection.cursor()
+            strSql = "CREATE OR REPLACE VIEW toi AS select order_id,created_date, ANY_VALUE(name) AS pname,status from orderitems group by order_id order by created_date"
+            result = cursor.execute(strSql)
+            strSql = "select * from toi"
+            result = cursor.execute(strSql)
+            orderitems = cursor.fetchall()
+            connection.commit()
+            connection.close()
+
+            # 총가격
+            orders = []
+            cursor = connection.cursor()
+            for ob in orderbill:
+                strSql = "select order_id,sum(cost*quantity) as Price from orderitems where order_id=%d" % ob[1]
+                result = cursor.execute(strSql)
+                temp = cursor.fetchall()
+                orders.append(temp[0][1])
+                # temp+=temp
+            connection.commit()
+            connection.close()
+
+            # 건수
+            orderpnum = []
+            cursor = connection.cursor()
+            for ob in orderbill:
+                strSql = "select count(name)-1 as casenum  from orderitems where order_id=%d" % ob[1]
+                result = cursor.execute(strSql)
+                temp = cursor.fetchall()
+                orderpnum.append(temp[0])
+                # temp+=temp
+            connection.commit()
+            connection.close()
+
+            # 상세 내역 보기
+            orderdetail = []
+            cursor = connection.cursor()
+            for ob in orderbill:
+                strSql = "select name,cost*quantity as price from orderitems where order_id=%d" % ob[1]
+                result = cursor.execute(strSql)
+                temp = cursor.fetchall()
+                orderdetail.append(temp)
+                # temp+=temp
+            connection.commit()
+            connection.close()
+
+            # 이미지
+            img = []
+            cursor = connection.cursor()
+            for ob in orderbill:
+                strSql = "select image from orderitems where order_id=%d" % ob[1]
+                result = cursor.execute(strSql)
+                temp = cursor.fetchall()
+                img.append(temp[0])
+                # temp+=temp
+            connection.commit()
+            connection.close()
+
+            forder = []
+            i = 0
+            for data in orderitems:
+                row = [
+                    data[1],  # 날짜
+                    data[2],  # 상품명
+                    data[0],  # 주문번호
+                    orders[i],  # 결제 금액
+                    data[3],  # 배송상태
+                    orderpnum[i],  # 건수
+                    orderdetail[i],
+                    img[i],
+                ]
+                i = i + 1
+                forder.append(row)
+
+
+
+        except:
+            connection.rollback()
+            print("Failed selecting in mypageview")
+
+        context = {'user': user,
+                   'forder': forder,
+                   }
+        # return HttpResponse(orderlist)
+        # return render(request, 'mypage.html', context={'user':user})
+        # return render(request, 'mypage.html', context={'orderlist':orderlist})
+        return render(request, 'mypageedit.html', context)
