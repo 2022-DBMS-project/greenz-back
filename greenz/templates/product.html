@@ -84,21 +84,22 @@
       <p class="explain2">Expiration date &nbsp; &nbsp; {{fresh_food.expirationdate}}</p>
       <hr>
 
-      <form class="form-inline">
+      <form class="form-inline" method="GET" action="/greenz/add/{{fresh_food.id}}">
       <div class="form-group">
       <label class="number">quantity purchased</label>
-      <input type="number" class="form-control" value="1" min="0" id="number" onclick="allPrice();"><br>
+      <input type="number" class="form-control" name="quantity" value="1" min="0" id="number" onclick="allPrice();"><br>
       </div>
-      </form>
+
       <hr>
       <div class="all_price">
       <p class="explain">total amount of goods</p>
       <h3 id="private">2290</h3>
       </div>
       <div class="bc">
-        <input type="submit" id="co" class="btn btn-default cart" onclick="Carting();" value="shopping cart">
-        <input type="submit" id="co1" class="btn btn-default buy" onClick="location.href='{% url 'cart:add_cart' fresh_food.id %}'" value="go shopping cart">
-    </div>
+          <input id="co" class="btn btn-default cart" onclick="Carting();" value="shopping cart">
+          <input type="submit" id="co1" class="btn btn-default buy" value="go shopping cart">
+      </div>
+      </form>
     </div>
 
   </div>

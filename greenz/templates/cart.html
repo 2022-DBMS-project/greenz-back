@@ -93,18 +93,14 @@
                     <form class="form-inline sum" action="/greenz/cart/" method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                                <button class="btn btn-default sum_button" type ="submit" onclick="CalCountplus{{ cart_item.id }}({{ cart_item.id }})">+</button>
+                            {% load mathfilters %}
+                            <button class="btn btn-default sum_button" type ="submit" onclick="CalCountplus{{ cart_item.id }}({{ cart_item.id }})">+</button>
                             <input type="hidden" name="id" value="{{ cart_item.id }}">
-                            <input type="text" class="form-control" name="quan" id="cart_count{{ cart_item.id }}" style="background-color: white;
-      font-size: large;
-      text-align: center;
-      width: 60px;
-      height: 40px;" value="{{cart_item.quantity}}" readonly="readonly"/>
-                                <button class="btn btn-default sum_button" type="button" onclick="CalCountminus{{ cart_item.id }}({{ cart_item.id }});">-</button>
-                            <h4 id="cart_price{{ cart_item.id }}" style="display: inline;
-      margin-left: 70px;
-      font-weight: bold;
-      font-size: x-large;">{{ cart_item.product.cost}}</h4>
+                            <input type="text" class="form-control" name="quan" id="cart_count{{ cart_item.id }}"
+                                   style="background-color: white; font-size: large; text-align: center; width: 60px;height: 40px;" value="{{cart_item.quantity}}" readonly="readonly"/>
+                                <button class="btn btn-default sum_button" type="submit" onclick="CalCountminus{{ cart_item.id }}({{ cart_item.id }});">-</button>
+                            <h4 id="cart_price{{ cart_item.id }}"
+                                style="display: inline; margin-left: 70px; font-weight: bold; font-size: x-large;">{{ cart_item.product.cost|mul:cart_item.quantity|floatformat}}</h4>
                         </div>
                         <script>
                             function CalCountplus{{ cart_item.id }}(seq){

@@ -374,6 +374,7 @@ def cart(request, total=0, cart_items=None):
     return render(request, 'cart.html', context)
 
 
+@csrf_exempt
 def add_cart(request, product_id):
     if request.COOKIES.get('id'):
         user = User.objects.get(id=request.COOKIES.get('id'))
@@ -386,7 +387,7 @@ def add_cart(request, product_id):
 
         if cart_item is None:
             item = CartItem()
-            item.quantity = 1
+            item.quantity = request.GET.get('quantity')
             item.isOrder = False
             item.cart_id = cart.id
             item.product_id = product_id
@@ -395,12 +396,12 @@ def add_cart(request, product_id):
         else:
             for item in cart_item:
                 if item.product_id == product_id:
-                    item.quantity += 1
+                    item.quantity += request.GET.get('quantity')
                     item.save()
                     return redirect('cart:cart')
 
             item = CartItem()
-            item.quantity = 1
+            item.quantity = request.GET.get('quantity')
             item.isOrder = False
             item.cart_id = cart.id
             item.product_id = product_id
