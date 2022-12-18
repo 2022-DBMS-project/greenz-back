@@ -165,7 +165,7 @@
 							<div class="order_list">
 								<div class="order_title">
 									<span class="date">날짜 {{oi.0}} </span>
-									<a class="list_detail" onclick='alert("{% for i in oi.6 %}{{i.0}} {{i.1}}\n{%endfor%}")' >주문내역 상세보기  </a>
+									<a class="list_detail" onclick='alert("{% for i in oi.6 %}{{i.0}} {{i.1|floatformat}}\n{%endfor%}")' >주문내역 상세보기  </a>
 								</div>
 								<div class="order_detail">
 									<div class="detail_info">
@@ -181,7 +181,7 @@
 											</dl>
 											<dl class="text_list">
 												<dt class="list_title">결제금액</dt>
-												<dd class="list_detail2">{{oi.3}}</dd>
+												<dd class="list_detail2">{{oi.3|floatformat}}</dd>
 											</dl>
 										</div>
 									</div>

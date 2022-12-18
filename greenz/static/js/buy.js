@@ -29,7 +29,6 @@ function order(){
         var cons=v.options[v.selectedIndex].value;
         var st="Credit card"
         alert(msg+'\n'+'Payment method: '+st+'\n'+cont+'/'+cons+'/'+x);
-        document.location.href="../templates/freshfood.html";
       }
       else if(i==1)
       {
@@ -37,8 +36,6 @@ function order(){
         var cont=s.options[s.selectedIndex].value;
         var st="make a deposit"
         alert(msg+'\n'+'Payment method: '+st+'\n'+cont);
-        document.location.href="../templates/freshfood.html";
-
       }
       else if(i==2)
       {
@@ -46,7 +43,6 @@ function order(){
         var cont=s.options[s.selectedIndex].value;
         var st="account transfer"
         alert(msg+'\n'+'Payment method: '+st+'\n'+cont);
-        document.location.href="../templates/freshfood.html";
       }
       else if(i==3)
       {
@@ -55,10 +51,7 @@ function order(){
         var x= document.getElementById("phone").value;
         var st="Mobile phone payment"
         alert(msg+'\n'+'Payment method: '+st+'\n'+cont+'/'+x);
-        document.location.href="../templates/freshfood.html";
       }
-      }
-
+    }
   }
-
 }

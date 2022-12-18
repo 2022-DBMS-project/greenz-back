@@ -7,6 +7,8 @@ from django.db import connection
 from django.contrib import messages
 from greenz.models import *
 from django.views import View
+from datetime import datetime
+import random
 
 
 
@@ -336,7 +338,7 @@ def cart(request, total=0, cart_items=None):
             user = User.objects.get(id=request.COOKIES.get('id'))
             cart = Cart.objects.get(user_id=user.uid)
 
-            cart_items = CartItem.objects.filter(cart=cart.id)
+            cart_items = CartItem.objects.filter(cart=cart.id, isOrder=False)
 
             for cart_item in cart_items:
                 product = Product.objects.get(id=cart_item.product.id)
@@ -375,6 +377,7 @@ def add_cart(request, product_id):
         if cart_item is None:
             item = CartItem()
             item.quantity = 1
+            item.isOrder = False
             item.cart_id = cart.id
             item.product_id = product_id
             item.save()
@@ -388,6 +391,7 @@ def add_cart(request, product_id):
 
             item = CartItem()
             item.quantity = 1
+            item.isOrder = False
             item.cart_id = cart.id
             item.product_id = product_id
             item.save()
@@ -403,7 +407,31 @@ def order(request, cart_id):
         text = 'Logout'
     else:
         text = 'Login'
-    return render(request, 'buy.html', context={'text': text})
+    return render(request, 'buy.html', context={'text': text, 'cart_id': cart_id })
+
+
+@csrf_exempt
+def order_detail(request, cart_id):
+    order = Orders()
+    date = datetime.today()
+    order.created_date = date.strftime("%Y.%m.%d")
+    order.shipped_date = str(date.year) + '.' + str(date.month) + '.' + str(date.day + random.randrange(1, 11))
+    order.user_id = Cart.objects.get(id=cart_id).user.uid
+    order.cart_id = cart_id
+    order.status_id = 1
+    order.save()
+
+    cartitem = CartItem.objects.filter(cart=cart_id, isOrder=False)
+    for item in cartitem:
+        detail = OrderItem()
+        detail.cart_item_id = item.id
+        detail.order_id = order.id
+        detail.save()
+
+        item.isOrder = True
+        item.save()
+
+    return redirect('cart:mypage')
 
 
 #edit
@@ -535,6 +563,7 @@ def edit(request):
 
         context = {'user': user,
                    'forder': forder,
+                   'text': 'Logout'
                    }
         # return HttpResponse(orderlist)
         # return render(request, 'mypage.html', context={'user':user})

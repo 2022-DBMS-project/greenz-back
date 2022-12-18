@@ -13,6 +13,7 @@ class Cart(models.Model):
 class CartItem(models.Model):
     id = models.AutoField(primary_key=True)
     quantity = models.IntegerField(blank=True, null=True)
+    isOrder = models.BooleanField(blank=True)
     cart = models.ForeignKey(Cart, models.DO_NOTHING)
     product = models.ForeignKey('Product', models.DO_NOTHING)
 
@@ -37,7 +38,7 @@ class Category(models.Model):
 
 
 class Orders(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     shipped_date = models.CharField(max_length=135, blank=True, null=True)
     created_date = models.CharField(max_length=135, blank=True, null=True)
     user = models.ForeignKey('User', models.DO_NOTHING)
@@ -47,6 +48,15 @@ class Orders(models.Model):
     class Meta:
         managed = False
         db_table = 'orders'
+
+
+class OrderItem(models.Model):
+    cart_item = models.ForeignKey(CartItem, models.DO_NOTHING)
+    order = models.ForeignKey('Orders', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'order_item'
 
 
 class Package(models.Model):
@@ -169,6 +179,7 @@ class RMAP(models.Model):
     class Meta:
         managed = False
         db_table = 'r_map'
+
 
 class FreshFoodList(models.Model):
     id = models.IntegerField(primary_key=True)
