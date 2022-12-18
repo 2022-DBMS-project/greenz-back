@@ -124,10 +124,11 @@ def restaurant(request):
 
 
 def list_restaurant(request, rmap_id):
-
     store = RMAP.objects.get(id=rmap_id)
-
-    return render(request, 'Restaurant.html', context={'store': store})
+    if request.COOKIES.get('id'):
+        return render(request, 'Restaurant.html', context={'store': store, 'text': 'Logout'})
+    else:
+        return render(request, 'Restaurant.html', context={'store': store, 'text': 'Login'})
 
 
 def mypage(request):
@@ -387,7 +388,7 @@ def add_cart(request, product_id):
 
         if cart_item is None:
             item = CartItem()
-            item.quantity = request.GET.get('quantity')
+            item.quantity = int(request.GET.get('quantity'))
             item.isOrder = False
             item.cart_id = cart.id
             item.product_id = product_id
@@ -396,12 +397,12 @@ def add_cart(request, product_id):
         else:
             for item in cart_item:
                 if item.product_id == product_id:
-                    item.quantity += request.GET.get('quantity')
+                    item.quantity += int(request.GET.get('quantity'))
                     item.save()
                     return redirect('cart:cart')
 
             item = CartItem()
-            item.quantity = request.GET.get('quantity')
+            item.quantity = int(request.GET.get('quantity'))
             item.isOrder = False
             item.cart_id = cart.id
             item.product_id = product_id
