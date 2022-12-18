@@ -109,7 +109,7 @@ def recipe_detail(request, recipe_id):
         'method':method
     }
 
-    return render(request, 'Recipe1.html', context)
+    return render(request, 'Recipe.html', context)
 
 
 # restaurant list page
@@ -125,16 +125,7 @@ def list_restaurant(request, rmap_id):
 
     store = RMAP.objects.get(id=rmap_id)
 
-    return render(request, 'Restaurant2.html', context={'store': store})
-
-
-# cart page
-def cart(request):
-    if request.COOKIES.get('id'):
-        return render(request, 'cart.html', context={'text': 'Logout'})
-    else:
-        messages.add_message(request, messages.ERROR, '권한이 없습니다. 로그인해주세요.')
-        return render(request, 'login.html', context={'text': 'Login'})
+    return render(request, 'Restaurant.html', context={'store': store})
 
 
 def mypage(request):
@@ -247,8 +238,6 @@ def mypage(request):
                     i = i + 1
                     forder.append(row)
 
-
-
             except:
                 connection.rollback()
                 print("Failed selecting in mypageview")
@@ -264,8 +253,6 @@ def mypage(request):
     else:
         messages.add_message(request, messages.ERROR, '권한이 없습니다. 로그인해주세요.')
         return render(request, 'login.html', context={'text': 'Login'})
-
-
 
 
 @csrf_exempt
@@ -339,27 +326,30 @@ def get_post(request):
     store_id = request.GET.get('id', None)
     store = RMAP.objects.get(name=store_id)
 
-    return render(request, 'Restaurant2.html', context={'store': store})
+    return render(request, 'Restaurant.html', context={'store': store})
 
 
 # cart page
 def cart(request, total=0, cart_items=None):
-    try:
-        user = User.objects.get(id=request.COOKIES.get('id'))
-        cart = Cart.objects.get(user_id=user.uid)
-
-        cart_items = CartItem.objects.filter(cart=cart.id)
-
-        for cart_item in cart_items:
-            product = Product.objects.get(id=cart_item.product.id)
-            total += (product.cost * cart_item.quantity)
-    except ObjectDoesNotExist:
-        pass
-
     if request.COOKIES.get('id'):
+        try:
+            user = User.objects.get(id=request.COOKIES.get('id'))
+            cart = Cart.objects.get(user_id=user.uid)
+
+            cart_items = CartItem.objects.filter(cart=cart.id)
+
+            for cart_item in cart_items:
+                product = Product.objects.get(id=cart_item.product.id)
+                total += (product.cost * cart_item.quantity)
+        except ObjectDoesNotExist:
+            pass
+
         text = 'Logout'
+
     else:
         text = 'Login'
+        messages.add_message(request, messages.ERROR, '권한이 없습니다. 로그인해주세요.')
+        return render(request, 'login.html', context={'text': 'Login'})
 
     context = {
         'cart_id': cart.id,
