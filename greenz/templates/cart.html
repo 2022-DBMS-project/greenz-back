@@ -90,69 +90,71 @@
             <div class="col-sm-12">
                 <img class="img" src="{{cart_item.product.image}}" width="150" height="150" class="img-rectangle">
                 <h4 class="cart_name">{{cart_item.product.name}}</h4>
-                <form class="form-inline sum">
-                    <div class="form-group">
-                        <button class="btn btn-default sum_button" type ="button" onclick="CalCountplus{{ cart_item.id }}({{ cart_item.id }})">+</button>
-                        <input type="text" class="form-control" id="cart_count{{ cart_item.id }}" style="background-color: white;
-  font-size: large;
-  text-align: center;
-  width: 60px;
-  height: 40px;" value="{{cart_item.quantity}}" readonly="readonly"/>
-                        <button class="btn btn-default sum_button" type="button" onclick="CalCountminus{{ cart_item.id }}({{ cart_item.id }});">-</button>
-                        <h4 id="cart_price{{ cart_item.id }}" style="display: inline;
-  margin-left: 70px;
-  font-weight: bold;
-  font-size: x-large;">{{ cart_item.product.cost}}</h4>
-                    </div>
-                    <script>
-                        function CalCountplus{{ cart_item.id }}(seq){
-                          var id;
-                          var all_money;
-                          var money;
-                          if(parseInt(seq)=={{ cart_item.id }})
-                          {
-                            id="cart_count{{ cart_item.id }}";
-                            all_money="cart_price{{ cart_item.id }}";
-                            money={{ cart_item.product.cost }};
-                          }
+                    <form class="form-inline sum" action="/greenz/cart/" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                                <button class="btn btn-default sum_button" type ="submit" onclick="CalCountplus{{ cart_item.id }}({{ cart_item.id }})">+</button>
+                            <input type="hidden" name="id" value="{{ cart_item.id }}">
+                            <input type="text" class="form-control" name="quan" id="cart_count{{ cart_item.id }}" style="background-color: white;
+      font-size: large;
+      text-align: center;
+      width: 60px;
+      height: 40px;" value="{{cart_item.quantity}}" readonly="readonly"/>
+                                <button class="btn btn-default sum_button" type="button" onclick="CalCountminus{{ cart_item.id }}({{ cart_item.id }});">-</button>
+                            <h4 id="cart_price{{ cart_item.id }}" style="display: inline;
+      margin-left: 70px;
+      font-weight: bold;
+      font-size: x-large;">{{ cart_item.product.cost}}</h4>
+                        </div>
+                        <script>
+                            function CalCountplus{{ cart_item.id }}(seq){
+                              var id;
+                              var all_money;
+                              var money;
+                              if(parseInt(seq)=={{ cart_item.id }})
+                              {
+                                id="cart_count{{ cart_item.id }}";
+                                all_money="cart_price{{ cart_item.id }}";
+                                money={{ cart_item.product.cost }};
+                              }
 
-                          var price=parseInt(document.getElementById(id).value);
+                              var price=parseInt(document.getElementById(id).value);
 
-                          document.getElementById(id).value=price+1;
+                              document.getElementById(id).value=price+1;
 
-                          var num=document.getElementById(id).value;
-                          var allprice=(parseInt(num))*parseInt(money);
-                          document.getElementById(all_money).innerHTML=allprice;
+                              var num=document.getElementById(id).value;
+                              var allprice=(parseInt(num))*parseInt(money);
+                              document.getElementById(all_money).innerHTML=allprice;
 
-                          document.getElementById("sk").innerHTML=parseInt(document.getElementById("sk").innerHTML)+parseInt(money);
-                          document.getElementById("result_price").innerHTML=parseInt(document.getElementById("sk").innerHTML)+2000;
+                              document.getElementById("sk").innerHTML=parseInt(document.getElementById("sk").innerHTML)+parseInt(money);
+                              document.getElementById("result_price").innerHTML=parseInt(document.getElementById("sk").innerHTML)+2000;
 
-                        }
-                        function CalCountminus{{ cart_item.id }}(seq){
-                          var id;
-                          var all_money;
-                          var money;
-                          if(parseInt(seq)=={{ cart_item.id }})
-                          {
-                            id="cart_count{{ cart_item.id }}";
-                            all_money="cart_price{{ cart_item.id }}";
-                            money={{ cart_item.product.cost }};
-                          }
+                            }
+                            function CalCountminus{{ cart_item.id }}(seq){
+                              var id;
+                              var all_money;
+                              var money;
+                              if(parseInt(seq)=={{ cart_item.id }})
+                              {
+                                id="cart_count{{ cart_item.id }}";
+                                all_money="cart_price{{ cart_item.id }}";
+                                money={{ cart_item.product.cost }};
+                              }
 
-                          var price=parseInt(document.getElementById(id).value);
+                              var price=parseInt(document.getElementById(id).value);
 
-                          document.getElementById(id).value=price-1;
+                              document.getElementById(id).value=price-1;
 
-                          var num=document.getElementById(id).value;
-                          var allprice=(parseInt(num))*parseInt(money);
-                          document.getElementById(all_money).innerHTML=allprice;
+                              var num=document.getElementById(id).value;
+                              var allprice=(parseInt(num))*parseInt(money);
+                              document.getElementById(all_money).innerHTML=allprice;
 
-                          document.getElementById("sk").innerHTML=parseInt(document.getElementById("sk").innerHTML)-parseInt(money);
-                          document.getElementById("result_price").innerHTML=parseInt(document.getElementById("sk").innerHTML)+2000;
+                              document.getElementById("sk").innerHTML=parseInt(document.getElementById("sk").innerHTML)-parseInt(money);
+                              document.getElementById("result_price").innerHTML=parseInt(document.getElementById("sk").innerHTML)+2000;
 
-                        }
-                    </script>
-                </form>
+                            }
+                        </script>
+                    </form>
                 <hr>
             </div>
             {% endfor %}

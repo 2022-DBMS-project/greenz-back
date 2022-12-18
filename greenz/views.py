@@ -353,6 +353,16 @@ def cart(request, total=0, cart_items=None):
         messages.add_message(request, messages.ERROR, '권한이 없습니다. 로그인해주세요.')
         return render(request, 'login.html', context={'text': 'Login'})
 
+    if request.method == "POST":
+        id=request.POST['id']
+        quan=request.POST['quan']
+        temp=CartItem.objects.get(id=id)
+        temp.id=id
+        temp.quantity=quan
+        temp.save()
+        return redirect('/greenz/cart')
+
+
     context = {
         'cart_id': cart.id,
         'cart_items': cart_items,
