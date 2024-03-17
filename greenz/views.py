@@ -225,6 +225,7 @@ def mypage(request):
                 connection.commit()
                 connection.close()
 
+                global forder
                 forder = []
                 i = 0
                 for data in orderitems:
